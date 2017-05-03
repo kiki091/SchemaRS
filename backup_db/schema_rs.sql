@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.13, for linux-glibc2.5 (x86_64)
 --
 -- Host: 127.0.0.1    Database: schema_rs
 -- ------------------------------------------------------
--- Server version	5.5.5-10.1.16-MariaDB
+-- Server version	5.7.17-0ubuntu0.16.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -92,6 +92,37 @@ LOCK TABLES `doctor_schedule` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `history_disease`
+--
+
+DROP TABLE IF EXISTS `history_disease`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `history_disease` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `complaint_of_felt` text COMMENT 'id:keluhan',
+  `diagnosis` text,
+  `actions` enum('0','1','2','3') DEFAULT NULL COMMENT '- 0 = Rawat Jalan\n- 1 = Rawat Inap\n- 2 = Rujukan RS Lain\n- 3 = Meninggal',
+  `medical_record_id` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `created_by` int(3) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_history_disease_1_idx` (`medical_record_id`),
+  CONSTRAINT `fk_history_disease_1` FOREIGN KEY (`medical_record_id`) REFERENCES `medical_records` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `history_disease`
+--
+
+LOCK TABLES `history_disease` WRITE;
+/*!40000 ALTER TABLE `history_disease` DISABLE KEYS */;
+/*!40000 ALTER TABLE `history_disease` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `medical_records`
 --
 
@@ -99,17 +130,23 @@ DROP TABLE IF EXISTS `medical_records`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `medical_records` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `registration_id` varchar(45) DEFAULT NULL,
   `patient_id` int(11) DEFAULT NULL,
+  `patient_status` varchar(10) DEFAULT NULL,
   `doctor_id` int(11) DEFAULT NULL,
   `polyclinic_id` int(5) DEFAULT NULL,
-  `follow_up` enum('0','1') DEFAULT NULL COMMENT '- 0 = Rawat Jalan\n- 1 = Rawat Inap',
-  `complaint_of_felt` text COMMENT 'id:keluhan',
-  `diagnosis` text,
+  `follow_up` enum('0','1','2','3') DEFAULT NULL COMMENT '- 0 = Rawat Jalan\n- 1 = Rawat Inap\n- 2 = Rujukan RS Lain\n- 3 = Meninggal',
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(3) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_medical_records_1_idx` (`patient_id`),
+  KEY `fk_medical_records_2_idx` (`doctor_id`),
+  KEY `fk_medical_records_3_idx` (`polyclinic_id`),
+  CONSTRAINT `fk_medical_records_1` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_medical_records_2` FOREIGN KEY (`doctor_id`) REFERENCES `doctor` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_medical_records_3` FOREIGN KEY (`polyclinic_id`) REFERENCES `policlinic` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -138,8 +175,8 @@ CREATE TABLE `medical_records_detail` (
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(3) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_rekam_medis_detail_1_idx` (`medical_records_id`),
-  CONSTRAINT `fk_medical_record` FOREIGN KEY (`medical_records_id`) REFERENCES `medical_records` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `fk_medical_records_detail_1_idx` (`medical_records_id`),
+  CONSTRAINT `fk_medical_records_detail_1` FOREIGN KEY (`medical_records_id`) REFERENCES `medical_records` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -342,6 +379,46 @@ LOCK TABLES `registration` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `registration_inpatient`
+--
+
+DROP TABLE IF EXISTS `registration_inpatient`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `registration_inpatient` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `registration_id` int(11) DEFAULT NULL,
+  `person_in_charge` varchar(55) DEFAULT NULL COMMENT 'penanggung jawab',
+  `relation_family` varchar(45) DEFAULT NULL,
+  `phone_number` varchar(15) DEFAULT NULL,
+  `type_reference` int(1) DEFAULT NULL COMMENT '1: Kemauan Sendiri\n2: Rujukan Rs Lain\n3: Rujukan Internal',
+  `complaint_of_felt` text,
+  `registration_note` text,
+  `room_care_id` int(11) DEFAULT NULL,
+  `doctor_id` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `created_by` int(3) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_registration_inpatient_1_idx` (`registration_id`),
+  KEY `fk_registration_inpatient_2_idx` (`room_care_id`),
+  KEY `fk_registration_inpatient_3_idx` (`doctor_id`),
+  CONSTRAINT `fk_registration_inpatient_1` FOREIGN KEY (`registration_id`) REFERENCES `registration` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_registration_inpatient_2` FOREIGN KEY (`room_care_id`) REFERENCES `room_care` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_registration_inpatient_3` FOREIGN KEY (`doctor_id`) REFERENCES `doctor` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `registration_inpatient`
+--
+
+LOCK TABLES `registration_inpatient` WRITE;
+/*!40000 ALTER TABLE `registration_inpatient` DISABLE KEYS */;
+/*!40000 ALTER TABLE `registration_inpatient` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `room_care`
 --
 
@@ -412,4 +489,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-02 18:10:11
+-- Dump completed on 2017-05-04  0:09:38
