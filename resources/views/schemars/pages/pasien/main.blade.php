@@ -24,7 +24,7 @@
 		        <div class="main__content__layer" style="margin-top: 5%;">
 		        	<div class="content__top flex-between">
 		        		<div class="content__title">
-		        			<h2>@{{ form_add_title }}</h2>
+		        			<h2>{{ trans('general.title_lable_pasien') }}</h2>
 
 		        		</div>
 		        		<div class="content__btn">
@@ -37,7 +37,7 @@
 								<div class="news__list__detail">
 									<div class="drag__control">
 										<div class="handle">
-											@include('nusantara.cms.svg-logo.handle-drag')
+											@include('schemars.svg-logo.handle-drag')
 										</div>
 									</div>
 									<div class="news__list__detail__left">

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Transformation\Cms;
+namespace App\Services\Transformation;
 
 use Auth;
 

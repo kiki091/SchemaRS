@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Implementation\Cms;
+namespace App\Repositories\Implementation;
 
 use Illuminate\Http\Request;
 use App\Repositories\Implementation\BaseImplementation;

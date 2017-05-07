@@ -23,8 +23,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        /*if ($this->app->environment() == 'local') {
-            $this->app->register('Iber\Generator\ModelGeneratorProvider');
-        }*/
+        $this->app->bind('App\Repositories\Contracts\Patient', 'App\Repositories\Implementation\Patient');
+    }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return array(
+            'App\Repositories\Contracts\Patient',
+        );
     }
 }

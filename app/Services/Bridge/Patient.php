@@ -18,7 +18,7 @@ class Patient {
      * @param $params
      * @return mixed
      */
-    public function getData($params)
+    public function getData($params = [])
     {
         return $this->patient->getData($params);
     }

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\BaseController;
 use App\Services\Api\Response as ResponseService;
 use App\Services\Bridge\Auth\User as UserServices;
-use App\Services\Bridge\Cms\Patient as PatienServices;
+use App\Services\Bridge\Patient as PatienServices;
 
 use Auth;
 use Session;

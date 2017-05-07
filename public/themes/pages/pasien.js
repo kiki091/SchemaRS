@@ -60,29 +60,29 @@ function crudDataPasien() {
             },
             
             resetForm: function(){
-                this.models.id = '',
-                this.models.nik = '',
-                this.models.fullname = '',
-                this.models.gender = '',
-                this.models.place_of_birth = '',
-                this.models.date_of_birth = '',
-                this.models.height = '',
-                this.models.weight = '',
-                this.models.street = '',
-                this.models.districts = '',
-                this.models.city = '',
-                this.models.province = '',
-                this.models.age = '',
-                this.models.phone_number = '',
-                this.models.description = '',
-                this.models.religion = '',
-                this.models.education = '',
-                this.models.blood = '',
-                this.models.work = '',
-                this.models.citizen = '',
-                this.models.country = '',
-                this.models.marital_status = '',
-                this.models.registration_id = '',
+                this.models.id = ''
+                this.models.nik = ''
+                this.models.fullname = ''
+                this.models.gender = ''
+                this.models.place_of_birth = ''
+                this.models.date_of_birth = ''
+                this.models.height = ''
+                this.models.weight = ''
+                this.models.street = ''
+                this.models.districts = ''
+                this.models.city = ''
+                this.models.province = ''
+                this.models.age = ''
+                this.models.phone_number = ''
+                this.models.description = ''
+                this.models.religion = ''
+                this.models.education = ''
+                this.models.blood = ''
+                this.models.work = ''
+                this.models.citizen = ''
+                this.models.country = ''
+                this.models.marital_status = ''
+                this.models.registration_id = ''
             },
 
         }
