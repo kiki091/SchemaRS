@@ -15,7 +15,7 @@ Route::group(['middleware' => ['web']], function ()
 {
 	Route::group(['domain' => env('WORLD_WIDE_WEB') . env('DOMAIN_PREFIX') . env('APP_DOMAIN')], function()
     {
-    	Route::group(['prefix' => LaravelLocalization::setLocale()], function()
+    	Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'localize' ]], function()
 		{
 			Route::get('/', 'SchemaRS\Web\AuthController@index')->name('login');
 			
