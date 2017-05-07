@@ -10,7 +10,7 @@
         <!-- sidebar menu -->
         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
             <div class="menu_section">
-                <h3>General</h3>
+                <h3>{{ trans('general.title_lable_general') }}</h3>
                 <ul class="nav side-menu">
                     
                     <li>
@@ -21,7 +21,7 @@
                         </a>
                         <ul class="nav child_menu">
                             <li>
-                                <a href="#Patient" onclick="menuPasien()">Patient</a>
+                                <a href="#Patient" onclick="menuPasien()">{{ trans('general.title_lable_pasien') }}</a>
                             </li> 
                         </ul>
                     </li> 

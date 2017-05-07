@@ -18,7 +18,6 @@ class BaseController extends Controller
 	protected $user;
 
     const URL_BLADE_CMS = 'schemars.pages.'; 
-    const TITLE_NAME_HEADER = 'SISTEM INFORMASI RUMAHSAKIT';
 
 	public function __construct(UserServices $user)
     {
@@ -40,10 +39,5 @@ class BaseController extends Controller
             'token' => csrf_token(),
             'app_domain' => env('DOMAIN_PREFIX') . env('APP_DOMAIN'),
         ]);
-    }
-
-    public function getUserData()
-    {
-    	return DataHelper::userEmail();
     }
 }

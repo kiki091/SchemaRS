@@ -30,12 +30,11 @@ class DashboardController extends BaseController
            return redirect()->route('login');
         }
         
-    	$data['email'] = DataHelper::userEmail();
         $blade = self::URL_BLADE_CMS.'.dashboard';
 
         if(view()->exists($blade)) 
         {
-            return view($blade, $data);
+            return view($blade);
         }
         return abort(404);
     }
