@@ -1,0 +1,2 @@
+<ul><li>Pria</li><li>Maksimal 35 tahun</li><li>Pendidikan terakhir S1/D3 Jurusan Hukum / Manajemen / Teknik,</li><li>Pengalaman menjadi General Affair minimal 1 tahun</li><li>Pengalaman dalam mengurus perijinan, maintenance gedung, dan pekerjaan General Affairs lainnya</li><li>Dapat mengoperasikan komputer, Microsoft Office (Word, Excel, Powerpoint) dan internet</li><li>Dapat bekerja secara teamwork dan dapat bekerja dibawah tekanan</li>
+

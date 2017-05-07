@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="39px" height="39px" viewBox="0 0 39 39" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39 (31667) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 12</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="0%" id="linearGradient-1">
+            <stop stop-color="#F2F7F9" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <ellipse id="path-2" cx="17.5932203" cy="17.5967742" rx="17.4067797" ry="17.4032258"></ellipse>
+    </defs>
+    <g id="Romantic-Dining" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Reservation-Romantic-Dining-Add-ons-Update-1" transform="translate(-440.000000, -309.000000)">
+            <g id="Group-8" transform="translate(337.000000, 263.000000)">
+                <g id="Group-2" transform="translate(61.000000, 0.000000)">
+                    <g id="Group-12" transform="translate(44.000000, 48.000000)">
+                        <g id="Oval-143">
+                            <use stroke="#FFFFFF" stroke-width="4" fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+                            <use stroke="#9FBFCB" stroke-width="2" xlink:href="#path-2"></use>
+                        </g>
+                        <path d="M23.192604,16.1005693 L19.7495047,16.1005693 L19.7495047,10.9032258 L14.5848558,10.9032258 L14.5848558,16.1005693 L11.1417565,16.1005693 L17.1671803,22.1641366 L23.192604,16.1005693 L23.192604,16.1005693 Z M11.1417565,23.8965844 L11.1417565,25.6290323 L23.192604,25.6290323 L23.192604,23.8965844 L11.1417565,23.8965844 L11.1417565,23.8965844 Z" id="Shape" fill="#9FBFCB"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.7.1 (28215) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 4 Copy 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="40" height="40"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="40" height="40" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.16 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <circle id="path-4" cx="30.2222222" cy="29.7777778" r="3.55555556"></circle>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-5">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.16 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Wedding-Landing-Page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Wedding-Add-Banner-Image" transform="translate(-250.000000, -300.000000)">
+            <g id="Group-4-Copy-2" transform="translate(250.000000, 300.000000)">
+                <g id="Photos-(1)" filter="url(#filter-3)" transform="translate(8.888889, 8.888889)">
+                    <g id="icons">
+                        <g id="XMLID_11997_">
+                            <g id="XMLID_11999_">
+                                <path d="M20.5128205,22.2222222 L1.70940171,22.2222222 C0.769230769,22.2222222 0,21.4529915 0,20.5128205 L0,1.70940171 C0,0.769230769 0.769230769,0 1.70940171,0 L20.5128205,0 C21.4529915,0 22.2222222,0.769230769 22.2222222,1.70940171 L22.2222222,20.5128205 C22.2222222,21.4529915 21.4529915,22.2222222 20.5128205,22.2222222 L20.5128205,22.2222222 Z" id="XMLID_12003_" fill="#FEFFFD"></path>
+                                <polyline id="XMLID_12002_" stroke="#9B9B9B" stroke-width="1.33547009" points="0 14.5299145 6.83760684 6.83760684 12.8205128 14.5299145 17.0940171 9.4017094 22.2222222 14.5299145"></polyline>
+                                <ellipse id="XMLID_12001_" stroke="#9B9B9B" stroke-width="1.33547009" cx="12.8205128" cy="6.83760684" rx="1.70940171" ry="1.70940171"></ellipse>
+                                <path d="M20.5128205,22.2222222 L1.70940171,22.2222222 C0.769230769,22.2222222 0,21.4529915 0,20.5128205 L0,1.70940171 C0,0.769230769 0.769230769,0 1.70940171,0 L20.5128205,0 C21.4529915,0 22.2222222,0.769230769 22.2222222,1.70940171 L22.2222222,20.5128205 C22.2222222,21.4529915 21.4529915,22.2222222 20.5128205,22.2222222 L20.5128205,22.2222222 Z" id="XMLID_12000_" stroke="#9B9B9B" stroke-width="1.33547009"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+                <g id="Oval-2">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-5)" xlink:href="#path-4"></use>
+                    <use fill="#44C7F4" fill-rule="evenodd" xlink:href="#path-4"></use>
+                </g>
+                <polygon id="+" fill="#FFFFFF" points="30.4707192 29.580049 31.5555556 29.580049 31.5555556 30.0476509 30.4707192 30.0476509 30.4707192 31.2767758 29.9737252 31.2767758 29.9737252 30.0476509 28.8888889 30.0476509 28.8888889 29.580049 29.9737252 29.580049 29.9737252 28.4444444 30.4707192 28.4444444"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

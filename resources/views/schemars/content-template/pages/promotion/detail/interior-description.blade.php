@@ -1,0 +1,3 @@
+<p>
+<span class="first-letter">W</span>hen it’s nice out, why wait to take it all in? Quick and quiet, the new electrical hood mechanism means you can get a full view in just 18 seconds – even when you’re driving. It’s also a full soft top that keeps its options open; especially now you can opt for the MINI Yours Union Jack design. A 3-in-1 convertible roof, it can be up, down or used as sunroof, opening a gap of around 40 cm to let in the breeze.
+</p>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="120px" height="120px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.1 (35376) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 8</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="40" height="40"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="40" height="40" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Pages-Awards" transform="translate(-277.000000, -268.000000)">
+            <g id="Group-8" transform="translate(277.000000, 268.000000)">
+                <use id="Rectangle-237" stroke-opacity="0.5" stroke="#9FBFCB" mask="url(#mask-2)" stroke-width="2" fill="#F6F8F9" xlink:href="#path-1"></use>
+                <path d="M22.9090909,19 L17.4545455,26.2727273 L21.6,31.8 L19.2727273,33.5454545 C16.8145455,30.2727273 12.7272727,24.8181818 12.7272727,24.8181818 L4,36.4545455 L36,36.4545455 L22.9090909,19" id="Fill-376" fill-opacity="0.5" fill="#9FBFCB"></path>
+            </g>
+        </g>
+    </g>
+</svg>

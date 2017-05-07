@@ -1,0 +1,117 @@
+.custom__css div{
+    /*font-size: 50px;*/
+}
+
+.cke_editable{
+    margin: 20px !important;
+    font-size: 13px;
+}
+.cke_editable p{
+    font-size: 13px;
+}
+ol,ul,dl
+{
+    /* IE7: reset rtl list margin. (#7334) */
+    *margin-right: 0px;
+    /* preserved spaces for list items with text direction other than the list. (#6249,#8049)*/
+    padding: 0 40px !important;
+}
+
+li {
+    list-style-type: inherit !important;
+}
+
+ol{
+    list-style-type: decimal !important;
+    // li{
+    //     list-style-type: inherit !important;
+    // }
+}
+ul{
+    list-style-type: disc !important;
+    // li{
+    //     list-style-type: inherit !important;
+    // }
+}
+
+table tr td{
+    border: 1px solid ;
+}
+
+div{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+}
+// .col-md-8 {
+//  /*width: 66.66666667%;*/
+//  padding-top: 10px;
+//  position: relative;
+//  min-height: 1px;
+//  padding-left: 10px;
+//  padding-right: 10px;
+// }
+// .offers-price-table {
+//     padding-left: 10px;
+//     padding-right: 10px;
+//     margin-bottom: 20px;
+// }
+// .row {
+//     margin-left: -10px;
+//     margin-right: -10px;
+// }
+// .row::after {
+//     clear: both;
+// }
+// .offers-price-table .offers-price-table-header .row {
+//     background: #a0cfd6;
+//     padding-top: 12px;
+//     padding-bottom: 10px;
+//     display: flex;
+// }
+// .offers-price-table .offers-price-table-table .row {
+//     padding-top: 12px;
+//     padding-bottom: 10px;
+//     position: relative;
+// }
+// .offers-price-table .offers-price-table-table .row:nth-child(odd) {
+//     background: #f5f5f3;
+// }
+// .col-md-6 {
+//     width: 50%;
+//     /*float: left;*/
+// }
+// .offers-price-table .offers-price-table-table .table-right-element-center {
+//     position: absolute;
+//     right: 0;
+//     top: 50%;
+//     -webkit-transform: translateY(-50%);
+//     -moz-transform: translateY(-50%);
+//     -ms-transform: translateY(-50%);
+//     -o-transform: translateY(-50%);
+//     transform: translateY(-50%);
+// }
+// .offers-price-table .offers-price-table-table p {
+//     font-family: 'Open Sans',Verdana,Geneva,sans-serif;
+//     font-size: 14px;
+//     line-height: 28px;
+//     text-align: center;
+//     color: #707070;
+//     padding-left: 10px;
+//     font-style: normal;
+//     font-weight: 400;
+// }
+// .offers-price-table .offers-price-table-header p {
+//     font-family: "Gotham A","Gotham B",Verdana,Geneva,sans-serif;
+//     font-style: normal;
+//     font-weight: 400;
+//     font-size: 12px;
+//     line-height: 28px;
+//     color: #fff;
+//     text-transform: uppercase;
+//     letter-spacing: .1em;
+//     padding-left: 10px;
+//     text-align: center;
+// }

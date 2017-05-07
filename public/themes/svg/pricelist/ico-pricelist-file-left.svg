@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="64px" height="82px" viewBox="0 0 64 82" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39 (31667) - http://www.bohemiancoding.com/sketch -->
+    <title>file copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="0%" id="linearGradient-1">
+            <stop stop-color="#F9FDFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Romantic-Dining" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Reservation-Romantic-Dining-Add-ons-Update-4" transform="translate(-701.000000, -266.000000)">
+            <g id="Group-4" transform="translate(671.000000, 228.000000)">
+                <g id="Group-2">
+                    <g id="file-copy" transform="translate(31.000000, 40.000000)">
+                        <g id="Capa_1">
+                            <g id="Group">
+                                <g id="Shape">
+                                    <path d="M60.9237288,20.7355032 C60.9237288,19.6344862 60.2892823,18.1076185 59.5147499,17.3332442 L43.5869451,1.40869129 C42.8087875,0.630692572 41.2917994,0 40.1759261,0 L2.67153153,0 C1.56583537,0 0.669491525,0.89884314 0.669491525,1.99735637 L0.669491525,75.6478049 C0.669491525,76.7509144 1.56801315,77.6451613 2.67425783,77.6451613 L58.9189625,77.6451613 C60.0261644,77.6451613 60.9237288,76.7435031 60.9237288,75.6515936 L60.9237288,20.7355032 Z" stroke="#9FBFCB" stroke-width="3" fill="url(#linearGradient-1)"></path>
+                                    <polygon fill="#9FBFCB" transform="translate(25.782041, 51.327940) scale(-1, 1) rotate(-90.000000) translate(-25.782041, -51.327940) " points="29.3511576 55.7293211 29.3511576 38.5458989 22.2129237 38.5458989 22.2129237 55.7293211 17.4541011 55.7293211 25.7820406 64.1099802 34.1099802 55.7293211"></polygon>
+                                    <path d="M42.1779661,0 L42.1779661,16.7362201 C42.1779661,17.8439461 43.0821132,18.7419355 44.1840911,18.7419355 L60.9237288,18.7419355 L42.1779661,0 Z" fill="#9FBFCB"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

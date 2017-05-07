@@ -1,0 +1,35 @@
+<?php
+
+namespace App\Services\Transformation\Auth;
+
+class User
+{
+	/**
+     * Get Ayana Auth Session Transformation
+     * @param $data
+     * @return array
+     */
+    public function getAuthSessionTransform($data)
+    {
+        if(!is_array($data) || empty($data))
+            return array();
+
+        return $this->setAuthSessionTransform($data);
+    }
+
+    /**
+     * Set Ayana Auth Session Transformation
+     * @param $data
+     * @return array
+     */
+    protected function setAuthSessionTransform($data)
+    {
+        $dataTransform['user_id']               = isset($data['id']) ? $data['id'] : '';
+        $dataTransform['name']                  = isset($data['name']) ? $data['name'] : '';
+        $dataTransform['email']                 = isset($data['email']) ? $data['email'] : '';
+        $dataTransform['property_location_id']  = isset($data['property_location_id']) ? $data['property_location_id'] : '';
+        
+        return $dataTransform;
+    }
+
+}

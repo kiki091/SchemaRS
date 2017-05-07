@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="20px" height="21px" viewBox="0 0 20 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>important_message [#1448]</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Form-error-message" transform="translate(-25.000000, -198.000000)" fill="#FFFFFF">
+            <g id="Group-9" transform="translate(10.000000, 10.000000)">
+                <path d="M26,193.507 L26,200.507 C26,201.059 25.552,201.507 25,201.507 C24.448,201.507 24,201.059 24,200.507 L24,193.507 C24,192.955 24.448,192.507 25,192.507 C25.552,192.507 26,192.955 26,193.507 L26,193.507 Z M26,203.507 C26,204.059 25.552,204.507 25,204.507 C24.448,204.507 24,204.059 24,203.507 C24,202.955 24.448,202.507 25,202.507 C25.552,202.507 26,202.955 26,203.507 L26,203.507 Z M33,205.5 C33,206.052 32.552,206.5 32,206.5 L18,206.5 C17.448,206.5 17,206.052 17,205.5 L17,191.5 C17,190.948 17.448,190.5 18,190.5 L32,190.5 C32.552,190.5 33,190.948 33,191.5 L33,205.5 Z M33,188.5 L17,188.5 C15.895,188.5 15,189.399 15,190.503 L15,190.507 L15,206.507 C15,207.612 15.895,208.5 17,208.5 L33,208.5 C34.105,208.5 35,207.608 35,206.503 L35,190.507 C35,189.402 34,188.5 33,188.5 L33,188.5 Z" id="important_message-[#1448]"></path>
+            </g>
+        </g>
+    </g>
+</svg>
