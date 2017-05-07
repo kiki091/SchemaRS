@@ -33,18 +33,12 @@ class PatientController extends BaseController
 
     public function index(Request $request)
     {
-        
-    	$data['page_title'] = 'DATA PASIEN';
-    	$data['user'] = $this->user->setAuthSession();
-    	
-        $data['location_name'] = self::TITLE_NAME_HEADER;
-        $data['page_title'] = 'Patient';
 
-        $blade = self::URL_BLADE_CMS.'patient.main';
+        $blade = self::URL_BLADE_CMS.'pasien.main';
 
         if(view()->exists($blade)) 
         {
-            return view($blade, $data);
+            return view($blade);
         }
         return abort(404);
     }

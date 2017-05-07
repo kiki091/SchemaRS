@@ -17,6 +17,7 @@ Route::group(['middleware' => ['web']], function ()
     {
     	Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'localize' ]], function()
 		{
+			
 			Route::get('/', 'SchemaRS\Web\AuthController@index')->name('login');
 			
 			Route::post('auth', 'SchemaRS\Web\AuthController@authenticate')->name('authenticate');
@@ -24,15 +25,20 @@ Route::group(['middleware' => ['web']], function ()
 			Route::post('change-password', 'SchemaRS\Web\AuthController@changePassword')->name('ChangePassword');
 			
 			Route::get('logout', 'SchemaRS\Web\AuthController@logout')->name('logout');
-			
-			Route::get('dashboard', 'SchemaRS\Web\DashboardController@index')->name('CmsDashboard');
 
-			// Patient Uri
-			Route::group(array('prefix' => 'patient' ), function()
+			
+			Route::group(['middleware' => ['auth']], function ()
 			{
-				Route::get('/', 'SchemaRS\Web\Pages\PatientController@index')->name('PatientIndex');
-				Route::get('data', 'SchemaRS\Web\Pages\PatientController@getData')->name('getDataPatient');
+				Route::get('dashboard', 'SchemaRS\Web\DashboardController@index')->name('CmsDashboard');
+
+				// Patient Uri
+				Route::group(array('prefix' => 'patient' ), function()
+				{
+					Route::get('/', 'SchemaRS\Web\Pages\PatientController@index')->name('PatientIndex');
+					Route::get('data', 'SchemaRS\Web\Pages\PatientController@getData')->name('getDataPatient');
+				});
 			});
+			
 	    });
 	});
 });

@@ -18,6 +18,11 @@ class DashboardController extends BaseController
 	public function __construct(UserServices $user)
     {
         $this->user = $user;
+
+        
+        if (Auth::check() == null) {
+           return redirect()->route('login');
+        }
     }
 
 	/**
@@ -26,9 +31,6 @@ class DashboardController extends BaseController
      */
     public function index(Request $request)
     {
-    	if (Auth::check() == null) {
-           return redirect()->route('login');
-        }
         
         $blade = self::URL_BLADE_CMS.'.dashboard';
 

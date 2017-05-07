@@ -21,7 +21,7 @@
 <script type="text/javascript" src="{{ asset('js/menu/menu.js') }}"></script>
 <!-- End Component JS -->
 
-<script src="{{asset('themes/pages/awards.js')}}"></script>
+<script src="{{asset('themes/pages/pasien.js')}}"></script>
 <!-- jQuery plugins -->
 <!-- <script src="{{ asset('themes/vendors/jquery/dist/jquery.min.js') }}"></script> -->
 <!-- Bootstrap -->
