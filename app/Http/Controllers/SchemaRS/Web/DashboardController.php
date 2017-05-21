@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\BaseController;
 use App\Custom\Helper\DataHelper;
 use App\Services\Bridge\Auth\User as UserServices;
+use App\Http\Middleware\UserPrivilege as UserPrivilegeServices;
 
 use Auth;
 use Session;
@@ -13,11 +14,17 @@ use Validator;
 
 class DashboardController extends BaseController
 {
-	protected $user;
+    const ROLE_ADMINISTRATOR = 'Administrator';
+    const ROLE_CASHIER = 'Cashier';
 
-	public function __construct(UserServices $user)
+
+	protected $user;
+    protected $userPrivilege;
+
+	public function __construct(UserPrivilegeServices $userPrivilege,UserServices $user)
     {
         $this->user = $user;
+        $this->userPrivilege = $userPrivilege;
 
         
         if (Auth::check() == null) {
@@ -31,13 +38,26 @@ class DashboardController extends BaseController
      */
     public function index(Request $request)
     {
-        
-        $blade = self::URL_BLADE_CMS.'.dashboard';
+        switch (DataHelper::userRole()) {
 
-        if(view()->exists($blade)) 
-        {
-            return view($blade);
+            case self::ROLE_ADMINISTRATOR :
+                $blade = self::URL_BLADE_CMS.'.dashboard';
+
+                if(view()->exists($blade)) 
+                {
+                    return view($blade);
+                }
+                break;
+
+            case self::ROLE_CASHIER :
+                
+                return redirect(route('RegistrationIndex'));
+                break;
+
+            default:
+                return response()->json(['message' => 'No Privilege', 'status' => false]);
+                break;
         }
-        return abort(404);
+
     }
 }

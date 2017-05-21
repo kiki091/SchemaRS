@@ -27,7 +27,20 @@ class User
         $dataTransform['user_id']               = isset($data['id']) ? $data['id'] : '';
         $dataTransform['name']                  = isset($data['name']) ? $data['name'] : '';
         $dataTransform['email']                 = isset($data['email']) ? $data['email'] : '';
-        $dataTransform['property_location_id']  = isset($data['property_location_id']) ? $data['property_location_id'] : '';
+        $dataTransform['user_privilage']                  = $this->setUserRole($data['role']);
+        
+        return $dataTransform;
+    }
+
+    protected function setUserRole($data)
+    {
+        $dataTransform = array_map(function($data) {
+            return [
+                'role_id'   => isset($data['privilage']['id']) ? $data['privilage']['id'] : '',
+                'role_name' => isset($data['privilage']['name']) ? $data['privilage']['name'] : '',
+                'role_description' => isset($data['privilage']['description']) ? $data['privilage']['description'] : '',
+            ];
+        },$data);
         
         return $dataTransform;
     }

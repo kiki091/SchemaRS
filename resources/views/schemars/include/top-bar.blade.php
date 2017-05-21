@@ -42,27 +42,6 @@
                         </li>
                     </ul>
                 </li>
-
-                <li class="">
-                    <a href="javascript:;" class="change-language dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    @if(Request::segment(1) == "id")
-                        Bahasa
-                    @else
-                        Language
-                    @endif
-                        <span class=" fa fa-angle-down"></span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-usermenu pull-right">
-                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                            <li>
-                                <a style="color: #2d2d2d" rel="alternate" hreflang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode) }}">
-                                    {{ $properties['native'] }}
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </li>
-
             </ul>
         </nav>
     </div>

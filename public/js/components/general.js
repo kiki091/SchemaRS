@@ -192,6 +192,22 @@ Vue.directive("sort", {
 
 //end vue custome directive sortable js
 
+
+
+
+function setSelectedFolder()
+{
+    var CURRENT_SLUG = window.location.href.split("#")[1]
+    var $SIDEBAR_MENU = $('.folder--nav')
+
+    $SIDEBAR_MENU.find('a.folder--selected').removeClass("folder--selected")
+    var addingClass = $SIDEBAR_MENU.find('a[href="#' + CURRENT_SLUG + '"]').addClass("folder--selected")
+
+    if (!addingClass.length && CURRENT_SLUG  != 'gallery' && CURRENT_SLUG  != 'accommodation' && CURRENT_SLUG  != 'faq' && CURRENT_SLUG  != 'awards-page') {
+        $SIDEBAR_MENU.find('a:first-child').addClass("folder--selected")
+    }
+}
+
 function property() {
     $('.btn__add').click(function()
     {
@@ -411,15 +427,16 @@ function scrollTop()
 }
 
 function mainGeneral(){
-    notif();
+    datePicker();
+    setSelectedFolder();
+    buttonClickOpen();
+    buttonClickClose();
 }
 
 // INIT FUNCTION WEB CMS
-function initDataPasien()
+function initDataRegistration()
 {
-    crudDataPasien();
-    buttonClickOpen();
-    buttonClickClose();
+    mainGeneral()
+    crudDataRegistration();
     replaceToCkEditor();
-    moveCheck();
 }

@@ -22,7 +22,12 @@ class BaseImplementation
         return response()->json(['message' => $message, 'status' => $status, 'data' => $data]);
     }
 
-    protected function getBookingNumber($date = '')
+    /**
+     * Get Registration Number
+     * @return mixed
+     */
+
+    protected function generateRegistrationNumber($date = '')
     {
     	if (empty($date)) 
     	{

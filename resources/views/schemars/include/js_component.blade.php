@@ -8,9 +8,9 @@
 
 
 <!-- Vue -->
-<script src="{{asset('js/vue/2.0/vue.js')}}"></script>
-<script src="{{asset('js/vue/2.0/vue.min.js')}}"></script>
-<script src="{{asset('js/vue/2.0/vue-resource.js')}}"></script>
+<script src="{{asset('js/vue/1.x/vue.js')}}"></script>
+<script src="{{asset('js/vue/1.x/vue-min.js')}}"></script>
+<script src="{{asset('js/vue/1.x/vue-resource.js')}}"></script>
 <!-- <script type="text/javascript" src="{{asset('js/vue/2.0/vue.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/vue/2.0/vue.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/vue/2.0/vue-resource.js')}}"></script> -->
@@ -21,7 +21,7 @@
 <script type="text/javascript" src="{{ asset('js/menu/menu.js') }}"></script>
 <!-- End Component JS -->
 
-<script src="{{asset('themes/pages/pasien.js')}}"></script>
+<script src="{{asset('themes/pages/registration.js')}}"></script>
 <!-- jQuery plugins -->
 <!-- <script src="{{ asset('themes/vendors/jquery/dist/jquery.min.js') }}"></script> -->
 <!-- Bootstrap -->

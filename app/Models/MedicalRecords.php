@@ -39,6 +39,11 @@ class MedicalRecords extends Model
     {
         return $this->hasMany('App\Models\Policlinic', 'id', 'polyclinic_id');
     }
+
+    public function detail()
+    {
+        return $this->belongsTo('App\Models\MedicalRecordDetails', 'id', 'medical_records_id')->with('medicament');
+    }
     
     /***************** Scope *****************/
 

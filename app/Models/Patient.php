@@ -46,7 +46,7 @@ class Patient extends Model
 
     public function medical_record()
     {
-        return $this->belongsTo('App\Models\MedicalRecords', 'id', 'patient_id');
+        return $this->hasMany('App\Models\MedicalRecords', 'patient_id', 'id')->with('policlinic')->with('doctor')->with('detail');
     }
     
     /***************** Scope *****************/
@@ -57,6 +57,30 @@ class Patient extends Model
     public function scopeNik($query, $nik)
     {
         return $query->where('nik', $nik);
+    }
+
+    /**
+     * @param $query
+     */
+    public function scopeCity($query, $city)
+    {
+        return $query->where('city', $city);
+    }
+
+    /**
+     * @param $query
+     */
+    public function scopeProvince($query, $province)
+    {
+        return $query->where('province', $province);
+    }
+
+    /**
+     * @param $query
+     */
+    public function scopeFullname($query, $fullname)
+    {
+        return $query->where('fullname', $fullname);
     }
 
     /**

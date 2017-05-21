@@ -1,6 +1,6 @@
 @extends('schemars.layout.main')
 @section('content')
-
+{{--
     <div class="page-title">
 	    <div class="row-header">
 		        <div class="title_left">
@@ -17,4 +17,5 @@
 		</div>
 	</div>
     <!-- /page content -->
+--}}
 @endsection

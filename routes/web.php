@@ -15,30 +15,30 @@ Route::group(['middleware' => ['web']], function ()
 {
 	Route::group(['domain' => env('WORLD_WIDE_WEB') . env('DOMAIN_PREFIX') . env('APP_DOMAIN')], function()
     {
-    	Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'localize' ]], function()
+    	
+			
+		Route::get('/', 'SchemaRS\Web\AuthController@index')->name('login');
+		
+		Route::post('auth', 'SchemaRS\Web\AuthController@authenticate')->name('authenticate');
+		
+		Route::post('change-password', 'SchemaRS\Web\AuthController@changePassword')->name('ChangePassword');
+		
+		Route::get('logout', 'SchemaRS\Web\AuthController@logout')->name('logout');
+
+		
+		Route::group(['middleware' => ['auth', 'user.privilege']], function ()
 		{
-			
-			Route::get('/', 'SchemaRS\Web\AuthController@index')->name('login');
-			
-			Route::post('auth', 'SchemaRS\Web\AuthController@authenticate')->name('authenticate');
-			
-			Route::post('change-password', 'SchemaRS\Web\AuthController@changePassword')->name('ChangePassword');
-			
-			Route::get('logout', 'SchemaRS\Web\AuthController@logout')->name('logout');
+			Route::get('dashboard', 'SchemaRS\Web\DashboardController@index')->name('CmsDashboard');
 
-			
-			Route::group(['middleware' => ['auth']], function ()
+			// Registration pages route
+			Route::group(array('prefix' => 'registration' ), function()
 			{
-				Route::get('dashboard', 'SchemaRS\Web\DashboardController@index')->name('CmsDashboard');
-
-				// Patient Uri
-				Route::group(array('prefix' => 'patient' ), function()
-				{
-					Route::get('/', 'SchemaRS\Web\Pages\PatientController@index')->name('PatientIndex');
-					Route::get('data', 'SchemaRS\Web\Pages\PatientController@getData')->name('getDataPatient');
-				});
+				Route::get('/', 'SchemaRS\Web\Pages\RegistrationController@index')->name('RegistrationIndex');
+				Route::get('data', 'SchemaRS\Web\Pages\RegistrationController@getData')->name('getDataRegistration');
+				Route::get('search', 'SchemaRS\Web\Pages\RegistrationController@searchData')->name('searchDataRegistration');
+				Route::get('show', 'SchemaRS\Web\Pages\RegistrationController@showData')->name('showDataPatientRegistration');
+				Route::post('store', 'SchemaRS\Web\Pages\RegistrationController@storeData')->name('storeDataRegistration');
 			});
-			
-	    });
+		});
 	});
 });

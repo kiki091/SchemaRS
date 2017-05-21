@@ -2,28 +2,32 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    protected $connection = 'auth';
+    protected $table = 'users';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    public $timestamps = true;
+
     protected $fillable = [
-        'name', 'email', 'password',
+        'is_active',
+        'name',
+        'email',
+        'password',
+        'update_at',
+        'created_by'
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
+     * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
 }

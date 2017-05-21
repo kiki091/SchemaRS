@@ -1,8 +1,10 @@
 $(document).ready(function(){
-  //vue();
-  //dragOrderTable();
+    //vue();
+    //dragOrderTable();
 
-  wizardSlide();
+    wizardSlide();
+    datePicker();
+    cardAccordion();
 });
 
 /* BUTTON SHOW CARD PHOTO UPLOADER */
@@ -24,6 +26,130 @@ $(document).on('click', '.img__preview__big__close', function(){
         $('body').removeClass('popup__upload__preview__container');
     }, 200);
 });
+
+function datePicker(){
+    /* DATE TIME PICKER SOTR*/
+    $('#sotrdatepicker').datepicker({
+        language: 'en',
+        dateFormat: 'dd MM yyyy',
+        navTitles: {days: 'MM <i>yyyy</i>'},
+        autoClose: true,
+        toggleSelected: false
+    });
+    $(document).on('click',".datepick", function(){
+        $(this).datepicker({
+            language: 'en',
+            dateFormat: 'dd-mm-yyyy',
+            navTitles: {days: 'MM <i>yyyy</i>'},
+            autoClose: true,
+            toggleSelected: false
+        });
+    });
+    $(document).on('click', '.date-icon', function(){
+        $(this).parent('.input-icon').find('.datepick').datepicker({
+            language: 'en',
+            dateFormat: 'dd-mm-yyyy',
+            navTitles: {days: 'MM <i>yyyy</i>'},
+            autoClose: true,
+            toggleSelected: false
+        }).focus();
+    });
+    /* DATE PICKER DISABLE BEFORE TODAY*/
+    $(document).on('click',".datepick-disable-before-today", function(){
+        $(this).datepicker({
+            language: 'en',
+            dateFormat: 'dd-mm-yyyy',
+            navTitles: {days: 'MM <i>yyyy</i>'},
+            autoClose: true,
+            toggleSelected: false,
+            minDate: new Date
+        });
+    });
+    $(document).on('click', '.date-disabled-icon', function(){
+        $(this).parent('.input-icon').find('.datepick-disable-before-today').datepicker({
+            language: 'en',
+            dateFormat: 'dd-mm-yyyy',
+            navTitles: {days: 'MM <i>yyyy</i>'},
+            autoClose: true,
+            toggleSelected: false,
+            minDate: new Date
+        }).focus();
+    });
+
+    /* HIDE DATEPICKER WHEN CONTAINER SCORLLING */
+    $(".main_container").scroll(function() {
+        $(this).find('.datepick').datepicker('hide');
+        $(this).find('.datepick').blur();  
+    });
+    $(".main_container").scroll(function() {
+        $(this).find('.datepick-disable-before-today').datepicker('hide');
+        $(this).find('.datepick-disable-before-today').blur();  
+    });
+
+}
+
+/* =================== ACCORDION ========================== */
+function cardAccordion(){
+  $(document).on('click', '.style__accordion', function(){
+    var id = $(this).data('accordion');
+
+    if($(this).hasClass('clicked')){
+      $('#'+ id).slideDown(400);
+      $(this).removeClass('clicked');
+    }
+    else{
+      $('#'+ id).slideUp(400);
+      $(this).addClass('clicked');
+    }
+  });
+
+  // $('.accordion-inner-handle').css('visibility','hidden');
+
+  $(document).on('click', '.accordion-inner-toggle-button', function(){
+    if($('.accordion-inner-toggle-button').hasClass('clicked')){
+      $('.accordion-inner').slideDown(400);
+      $('.accordion-inner-toggle-button').removeClass('clicked');
+      $('.accordion-inner-handle').css('visibility','hidden');
+    }
+    else{
+      $('.accordion-inner').slideUp(400);
+      $('.accordion-inner-toggle-button').addClass('clicked');
+      $('.accordion-inner-handle').css('visibility','visible');
+    }
+  });
+}
+/* =================== END ACCORDION ========================== */
+
+/*========================== ACCORDION JS =================================*/
+// Accordion
+$(function()
+{
+  var Accordion = function(el, multiple) {
+    this.el = el || {};
+    this.multiple = multiple || false;
+
+    // Variables privadas
+    var links = this.el.find('.link');
+    // Evento
+    links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
+  }
+
+  Accordion.prototype.dropdown = function(e) {
+    var $el = e.data.el;
+    $this = $(this),
+    $next = $this.next();
+
+    $next.slideToggle();
+    $this.parent().toggleClass('open');
+
+    if (!e.data.multiple) {
+      $el.find('.sidebar__accordion__submenu').not($next).slideUp().parent().removeClass('open');
+    };
+  } 
+
+  var accordion = new Accordion($('#accordion'), false);
+});
+
 
 function dragOrderTable() {
 	

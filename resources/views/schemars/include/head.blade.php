@@ -21,6 +21,7 @@
 <!-- Custom Theme Style -->
 <link href="{{ asset('themes/build/css/custom.min.css') }}" rel="stylesheet">
 <link href="{{ asset('themes/css/custom.css') }}" rel="stylesheet">
+<link href="{{ asset('js/bower_components/air-datepicker-master/dist/css/datepicker.css') }}" rel="stylesheet">
 <link href="{{ asset('js/bower_components/hold-on/HoldOn.min.css') }}" rel="stylesheet">
 <link href="{{ asset('themes/css/notify.css') }}" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="{{ asset('js/bower_components/alert/dist/sweetalert.css') }}">
@@ -42,6 +43,10 @@
 <script type="text/javascript" src="{{ asset('themes/js/notify.js') }}"></script>
 <script src="{{ asset('themes/js/plugins.js') }}"></script>
 <script src="{{ asset('js/bower_components/alert/dist/sweetalert.min.js') }}"></script>
+
+
+<script src="{{ asset('js/bower_components/air-datepicker-master/dist/js/datepicker.js') }}"></script>
+<script src="{{ asset('js/bower_components/air-datepicker-master/dist/js/i18n/datepicker.en.js') }}"></script>
  <!-- 
 	END JS FILE ASSETS
  -->	

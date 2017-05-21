@@ -21,7 +21,7 @@
                         </a>
                         <ul class="nav child_menu">
                             <li>
-                                <a href="#Patient" onclick="menuPasien()">{{ trans('general.title_lable_pasien') }}</a>
+                                <a href="#Registration" onclick="menuRegistration()">{{ trans('general.title_lable_registration') }}</a>
                             </li> 
                         </ul>
                     </li> 

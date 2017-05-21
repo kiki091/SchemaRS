@@ -4,7 +4,7 @@ namespace App\Repositories\Implementation\Auth;
 
 use App\Repositories\Contracts\Auth\User as UserInterface;
 use App\Repositories\Implementation\BaseImplementation;
-use App\Models\Auth\User as UserModel;
+use App\Models\Auth\Users as UserModel;
 use App\Custom\Facades\DataHelper;
 use App\Services\Transformation\Auth\User as UserTransformation;
 use Cache;
@@ -68,7 +68,7 @@ class User extends BaseImplementation implements UserInterface
      */
     protected function user($params = array(), $orderType = 'asc', $returnType = 'array', $returnSingle = false)
     {
-        $user = $this->user;
+        $user = $this->user->with('role');
 
         if(isset($params['id'])) {
             $user->userId($params['id']);

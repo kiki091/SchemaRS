@@ -47,7 +47,7 @@ CREATE TABLE `doctor` (
   `created_by` int(3) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `nik_UNIQUE` (`nik`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -56,6 +56,7 @@ CREATE TABLE `doctor` (
 
 LOCK TABLES `doctor` WRITE;
 /*!40000 ALTER TABLE `doctor` DISABLE KEYS */;
+INSERT INTO `doctor` VALUES (1,'327689754',NULL,'DR Sobari','Laki-laki',NULL,NULL,NULL,NULL,'08129876873','S2',1,NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,1);
 /*!40000 ALTER TABLE `doctor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -147,7 +148,7 @@ CREATE TABLE `medical_records` (
   CONSTRAINT `fk_medical_records_1` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_medical_records_2` FOREIGN KEY (`doctor_id`) REFERENCES `doctor` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_medical_records_3` FOREIGN KEY (`polyclinic_id`) REFERENCES `policlinic` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -156,6 +157,7 @@ CREATE TABLE `medical_records` (
 
 LOCK TABLES `medical_records` WRITE;
 /*!40000 ALTER TABLE `medical_records` DISABLE KEYS */;
+INSERT INTO `medical_records` VALUES (1,'1',1,'Umum',1,1,NULL,'2017-03-28 00:00:00','2017-03-28 00:00:00',2);
 /*!40000 ALTER TABLE `medical_records` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -179,7 +181,7 @@ CREATE TABLE `medical_records_detail` (
   KEY `fk_medical_records_detail_2_idx` (`medicament_id`),
   CONSTRAINT `fk_medical_records_detail_1` FOREIGN KEY (`medical_records_id`) REFERENCES `medical_records` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_medical_records_detail_2` FOREIGN KEY (`medicament_id`) REFERENCES `medicament` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -188,6 +190,7 @@ CREATE TABLE `medical_records_detail` (
 
 LOCK TABLES `medical_records_detail` WRITE;
 /*!40000 ALTER TABLE `medical_records_detail` DISABLE KEYS */;
+INSERT INTO `medical_records_detail` VALUES (1,1,1,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `medical_records_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -212,7 +215,7 @@ CREATE TABLE `medicament` (
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(3) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -221,6 +224,7 @@ CREATE TABLE `medicament` (
 
 LOCK TABLES `medicament` WRITE;
 /*!40000 ALTER TABLE `medicament` DISABLE KEYS */;
+INSERT INTO `medicament` VALUES (1,'A-00100-0201','Inzana',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,2);
 /*!40000 ALTER TABLE `medicament` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -382,7 +386,7 @@ CREATE TABLE `patient` (
   `work` varchar(40) DEFAULT NULL,
   `citizen` int(1) DEFAULT NULL COMMENT '1:WNI, 2:WNA',
   `country` varchar(40) DEFAULT NULL,
-  `marital_status` varchar(45) DEFAULT NULL,
+  `marital_status` tinyint(1) DEFAULT NULL COMMENT '1: Belum Menikah\n2: Sudah Menikah',
   `registration_id` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
@@ -391,7 +395,7 @@ CREATE TABLE `patient` (
   UNIQUE KEY `nik_UNIQUE` (`nik`),
   KEY `fk_pasien_1_idx` (`registration_id`),
   CONSTRAINT `fk_pasien_1` FOREIGN KEY (`registration_id`) REFERENCES `registration` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -400,62 +404,8 @@ CREATE TABLE `patient` (
 
 LOCK TABLES `patient` WRITE;
 /*!40000 ALTER TABLE `patient` DISABLE KEYS */;
+INSERT INTO `patient` VALUES (1,'32647789000143','Kiki Kurniawan','male','Jakarta','1991-09-28',165,55,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,'S1','B','Karyawan Swasta',1,'Indonesia',2,1,'2017-03-28 00:00:00','2017-03-28 00:00:00',2),(2,'32647789000144','Kiki Kurniawan','male','Jakarta','1991-09-28',165,55,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,'S1','B','Karyawan Swasta',1,'Indonesia',2,2,'2017-03-28 00:00:00','2017-03-28 00:00:00',2),(3,'4543','Rijal','male','jakarta','2017-05-17',146,35,'Jl. Jati Rt.004/Rw.003 No.2 Sawangan Baru','Sawangan','Depok',NULL,15,'09776576323','',1,'2','A','Pelajar',1,'',1,3,'2017-05-20 18:18:03','2017-05-20 18:18:03',0);
 /*!40000 ALTER TABLE `patient` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `permission_role`
---
-
-DROP TABLE IF EXISTS `permission_role`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `permission_role` (
-  `permission_id` int(10) unsigned NOT NULL,
-  `role_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`permission_id`,`role_id`),
-  KEY `permission_role_role_id_foreign` (`role_id`),
-  CONSTRAINT `permission_role_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `permission_role_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `permission_role`
---
-
-LOCK TABLES `permission_role` WRITE;
-/*!40000 ALTER TABLE `permission_role` DISABLE KEYS */;
-/*!40000 ALTER TABLE `permission_role` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `permissions`
---
-
-DROP TABLE IF EXISTS `permissions`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `permissions` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `display_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `permissions_name_unique` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `permissions`
---
-
-LOCK TABLES `permissions` WRITE;
-/*!40000 ALTER TABLE `permissions` DISABLE KEYS */;
-INSERT INTO `permissions` VALUES (1,'role-list','Display Role Listing','See only Listing Of Role','2017-05-04 09:42:03','2017-05-04 09:42:03'),(2,'role-create','Create Role','Create New Role','2017-05-04 09:42:03','2017-05-04 09:42:03'),(3,'role-edit','Edit Role','Edit Role','2017-05-04 09:42:03','2017-05-04 09:42:03'),(4,'role-delete','Delete Role','Delete Role','2017-05-04 09:42:03','2017-05-04 09:42:03');
-/*!40000 ALTER TABLE `permissions` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -476,7 +426,7 @@ CREATE TABLE `policlinic` (
   PRIMARY KEY (`id`),
   KEY `fk_poliklinik_1_idx` (`rooms_id`),
   CONSTRAINT `fk_poliklinik_1` FOREIGN KEY (`rooms_id`) REFERENCES `rooms` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -485,6 +435,7 @@ CREATE TABLE `policlinic` (
 
 LOCK TABLES `policlinic` WRITE;
 /*!40000 ALTER TABLE `policlinic` DISABLE KEYS */;
+INSERT INTO `policlinic` VALUES (1,'Poli Umum',1,1,NULL,NULL,1);
 /*!40000 ALTER TABLE `policlinic` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -505,7 +456,7 @@ CREATE TABLE `registration` (
   `created_by` int(3) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `registration_number_UNIQUE` (`registration_number`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -514,6 +465,7 @@ CREATE TABLE `registration` (
 
 LOCK TABLES `registration` WRITE;
 /*!40000 ALTER TABLE `registration` DISABLE KEYS */;
+INSERT INTO `registration` VALUES (1,'R-001-001-001',2,'2017-03-28 00:00:00','2017-03-28 00:00:00','2017-03-28 00:00:00',2),(2,'R-001-001-002',2,'2017-03-28 00:00:00','2017-03-28 00:00:00','2017-03-28 00:00:00',2),(3,'01027118825020',0,'2017-05-20 18:18:02','2017-05-20 18:18:02','2017-05-20 18:18:02',NULL);
 /*!40000 ALTER TABLE `registration` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -555,60 +507,6 @@ CREATE TABLE `registration_inpatient` (
 LOCK TABLES `registration_inpatient` WRITE;
 /*!40000 ALTER TABLE `registration_inpatient` DISABLE KEYS */;
 /*!40000 ALTER TABLE `registration_inpatient` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `role_user`
---
-
-DROP TABLE IF EXISTS `role_user`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `role_user` (
-  `user_id` int(10) unsigned NOT NULL,
-  `role_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`user_id`,`role_id`),
-  KEY `role_user_role_id_foreign` (`role_id`),
-  CONSTRAINT `role_user_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `role_user_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `role_user`
---
-
-LOCK TABLES `role_user` WRITE;
-/*!40000 ALTER TABLE `role_user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `role_user` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `roles`
---
-
-DROP TABLE IF EXISTS `roles`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `roles` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `display_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `roles_name_unique` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `roles`
---
-
-LOCK TABLES `roles` WRITE;
-/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -661,7 +559,7 @@ CREATE TABLE `rooms` (
   `created_by` int(3) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `no_ruangan_UNIQUE` (`rooms_number`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -670,39 +568,8 @@ CREATE TABLE `rooms` (
 
 LOCK TABLES `rooms` WRITE;
 /*!40000 ALTER TABLE `rooms` DISABLE KEYS */;
+INSERT INTO `rooms` VALUES (1,1,'A-001',1,NULL,NULL,1);
 /*!40000 ALTER TABLE `rooms` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `users`
---
-
-DROP TABLE IF EXISTS `users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `users` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `level` varchar(25) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `is_active` tinyint(1) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `users`
---
-
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'kiki','sheqbo@gmail.com','$2y$10$jWqW0ETc23XTaaDtjktAw.XRvdet5BnBHauvmJLPBCWNfbyvI3YNy','admin','Qeh7yfy0vyKPEZhKIpN5S1IzW7dELx2qsr3iIlWPpNag5hwVcOTzUfq8RA0F',1,'2017-05-04 09:58:53','2017-05-04 09:58:53'),(2,'admin','admin@mail.com','$2y$10$jWqW0ETc23XTaaDtjktAw.XRvdet5BnBHauvmJLPBCWNfbyvI3YNy','admin',NULL,1,'2017-05-04 09:58:53','2017-05-04 09:58:53'),(3,'fikri','fikri@mail.com','$2y$10$jWqW0ETc23XTaaDtjktAw.XRvdet5BnBHauvmJLPBCWNfbyvI3YNy','apoteker',NULL,1,'2017-05-04 09:58:53','2017-05-04 09:58:53');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -714,4 +581,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-07 20:23:01
+-- Dump completed on 2017-05-22  1:27:01

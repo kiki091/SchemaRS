@@ -22,7 +22,12 @@ class Registration extends Model
 
     public function users()
     {
-        return $this->hasMany('App\Models\Auth\Users', 'id', 'users_id');
+        return $this->belongsTo('App\Models\Auth\Users', 'users_id', 'id');
+    }
+
+    public function patient()
+    {
+        return $this->belongsTo('App\Models\Patient', 'id', 'registration_id')->with('medical_record');
     }
     
     /***************** Scope *****************/

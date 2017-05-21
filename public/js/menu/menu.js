@@ -1,7 +1,7 @@
-function menuPasien()
+function menuRegistration()
 {
-    $('.right_col').load(laroute.url('/patient', []), function()
+    $('.right_col').load(laroute.url('/registration', []), function()
     {
-    	initDataPasien()
+    	initDataRegistration()
     });
 }
