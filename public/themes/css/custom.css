@@ -8,6 +8,11 @@ body.fixed {
     width: 100%;
 }
 
+.fild {
+    width: 30%;
+    text-align: left;
+}
+
 .filter__wrapper {
     height: auto;
     background: #ffffff;

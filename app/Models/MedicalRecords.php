@@ -32,17 +32,17 @@ class MedicalRecords extends Model
 
     public function doctor()
     {
-        return $this->hasMany('App\Models\Doctor', 'id', 'doctor_id');
+        return $this->belongsTo('App\Models\Doctor', 'doctor_id', 'id');
     }
 
     public function policlinic()
     {
-        return $this->hasMany('App\Models\Policlinic', 'id', 'polyclinic_id');
+        return $this->belongsTo('App\Models\Policlinic', 'polyclinic_id', 'id');
     }
 
     public function detail()
     {
-        return $this->belongsTo('App\Models\MedicalRecordDetails', 'id', 'medical_records_id')->with('medicament');
+        return $this->hasMany('App\Models\MedicalRecordDetails', 'medical_records_id', 'id');
     }
     
     /***************** Scope *****************/

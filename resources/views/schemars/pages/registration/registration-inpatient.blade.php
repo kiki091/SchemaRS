@@ -17,26 +17,15 @@
 		    	</div>
 			</div>
 		</div> -->
-
-		@include('schemars.pages.registration.partials.form')
-		@include('schemars.pages.registration.partials.table')
-
+		
+		@include('schemars.pages.registration.partials.form-inpatient')
+		{{--
+		@include('schemars.pages.registration.partials.table-inpatient')
+		--}}
         <div class="row">
 	        <div class="col-md-12 col-sm-12 col-xs-12">
 	        	<div class="folder--nav">
-					<a href="javascript:void(0);" class="folder--nav--link">
-						<i class="ico-banner-promotion">
-							@include('schemars.svg-logo.folder-nav.ico-folder-registration')
-						</i>
-						<span class="folder--nav--link--span">Registrasi Pasien</span>
-					</a>
-
-					<a href="javascript:void(0);" class="folder--nav--link">
-						<i class="ico-banner-promotion">
-							@include('schemars.svg-logo.folder-nav.ico-folder-registration')
-						</i>
-						<span class="folder--nav--link--span">Registrasi Rawat Inap</span>
-					</a>
+					@include('schemars.pages.registration.partials.folder')
 				</div>
 		        <div class="main__content__layer" style="margin-top: 3%;">
 					
@@ -90,19 +79,22 @@
 								<th>NIK</th>
 								<th>Nama Lengkap</th>
 								<th>Tanggal Registrasi</th>
-								<th>Keterangan</th>
+								<th>Dokter</th>
+								<th>Ruangan</th>
+								<th>Kelas</th>
 								<th>Opsi</th>
 							</tr>
 							<!-- isi tabel -->
 							<!--v-for-start-->
-							<tr v-for="registration in responseData.registration">
+							<tr v-for="registration_inpatient in responseData.registration_inpatient">
 								<td>@{{ $index + 1 }}</td>
-								<td>@{{ registration.registration_number }}</td>
-								<td>@{{ registration.nik }}</td>
-								<td>@{{ registration.fullname }}</td>
-								<td>@{{ registration.registration_date }}</td>
-								<td>@{{ registration.description }}</td>
-								<td><a href="javascript:void(0);" @click="showData(registration.id)" title="Lihat detail"><i class="fa fa-eye"></i></td>
+								<td>@{{ registration_inpatient.registration_number }}</td>
+								<td>@{{ registration_inpatient.nik }}</td>
+								<td>@{{ registration_inpatient.fullname }}</td>
+								<td>@{{ registration_inpatient.registration_date }}</td>
+								<td>@{{ registration_inpatient.doctor }}</td>
+								<td>@{{ registration_inpatient.room_care }}</td>
+								<td>@{{ registration_inpatient.room_class }}</td>
 							</tr><!--v-for-end-->
 							<!-- end isi tabel -->
 						</tbody>

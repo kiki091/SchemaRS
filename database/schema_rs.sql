@@ -56,7 +56,7 @@ CREATE TABLE `doctor` (
 
 LOCK TABLES `doctor` WRITE;
 /*!40000 ALTER TABLE `doctor` DISABLE KEYS */;
-INSERT INTO `doctor` VALUES (1,'327689754',NULL,'DR Sobari','Laki-laki',NULL,NULL,NULL,NULL,'08129876873','S2',1,NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,1);
+INSERT INTO `doctor` VALUES (1,'327689754',NULL,'DR Sobari','Laki-laki',NULL,NULL,NULL,NULL,'08129876873','S2',1,NULL,NULL,'Umum',NULL,NULL,NULL,1,NULL,NULL,1);
 /*!40000 ALTER TABLE `doctor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -124,6 +124,101 @@ LOCK TABLES `history_disease` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `laboratorium`
+--
+
+DROP TABLE IF EXISTS `laboratorium`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `laboratorium` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `room_id` int(11) DEFAULT NULL,
+  `laboratorium_name` varchar(45) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `created_by` int(3) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_laboratorium_1_idx` (`room_id`),
+  CONSTRAINT `fk_laboratorium_1` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `laboratorium`
+--
+
+LOCK TABLES `laboratorium` WRITE;
+/*!40000 ALTER TABLE `laboratorium` DISABLE KEYS */;
+INSERT INTO `laboratorium` VALUES (1,2,'Laboratorium',NULL,NULL,1);
+/*!40000 ALTER TABLE `laboratorium` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `laboratorium_result`
+--
+
+DROP TABLE IF EXISTS `laboratorium_result`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `laboratorium_result` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `registration_id` int(11) DEFAULT NULL,
+  `laboratorium_id` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `created_by` int(3) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_laboratorium_result_1_idx` (`registration_id`),
+  KEY `fk_laboratorium_result_2_idx` (`laboratorium_id`),
+  CONSTRAINT `fk_laboratorium_result_1` FOREIGN KEY (`registration_id`) REFERENCES `registration` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_laboratorium_result_2` FOREIGN KEY (`laboratorium_id`) REFERENCES `laboratorium` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `laboratorium_result`
+--
+
+LOCK TABLES `laboratorium_result` WRITE;
+/*!40000 ALTER TABLE `laboratorium_result` DISABLE KEYS */;
+INSERT INTO `laboratorium_result` VALUES (1,1,1,'2017-03-28 00:00:00','2017-03-28 00:00:00',1);
+/*!40000 ALTER TABLE `laboratorium_result` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `laboratorium_result_detail`
+--
+
+DROP TABLE IF EXISTS `laboratorium_result_detail`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `laboratorium_result_detail` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `laboratorium_result_id` int(11) DEFAULT NULL,
+  `category_result` varchar(45) DEFAULT NULL COMMENT 'HEMATOLOGI\nHITUNG JENIS\nNARKOBA\nURINALISA',
+  `sub_category_result` varchar(45) DEFAULT NULL COMMENT 'HEMATOLOGI RUTIN\nMARKROSKOPIK\nKIMIA URIN\nMIKROSKOPIK/SEDIMEN URIN',
+  `result_name` varchar(45) DEFAULT NULL,
+  `result` varchar(45) DEFAULT NULL,
+  `satuan` varchar(45) DEFAULT NULL,
+  `value` varchar(45) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `created_by` int(3) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `laboratorium_result_detail`
+--
+
+LOCK TABLES `laboratorium_result_detail` WRITE;
+/*!40000 ALTER TABLE `laboratorium_result_detail` DISABLE KEYS */;
+INSERT INTO `laboratorium_result_detail` VALUES (1,1,'HEMATOLOGI','HEMATOLOGI RUTIN','Hemoglobin','13.7','g/dl','14.0 - 16.0',NULL,NULL,NULL),(2,1,'HEMATOLOGI','HEMATOLOGI RUTIN','Eritrosit','4.70','10^6/UL','4.60 - 6.20',NULL,NULL,NULL),(3,1,'HEMATOLOGI','HEMATOLOGI RUTIN','Hematokrit','42','%','40 - 49',NULL,NULL,NULL),(4,1,'HEMATOLOGI','HEMATOLOGI RUTIN','Laju Endap Darah','9','mm','0 - 10',NULL,NULL,NULL),(5,1,'HEMATOLOGI','HEMATOLOGI RUTIN','Trombosit','270,000','/UL','150,000 - 400,000',NULL,NULL,NULL),(6,1,'HEMATOLOGI','HEMATOLOGI RUTIN','Leukosit','8,100','/UL','5,000 - 10,000',NULL,NULL,NULL);
+/*!40000 ALTER TABLE `laboratorium_result_detail` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `medical_records`
 --
 
@@ -134,13 +229,15 @@ CREATE TABLE `medical_records` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `registration_id` varchar(45) DEFAULT NULL,
   `patient_id` int(11) DEFAULT NULL,
-  `patient_status` varchar(10) DEFAULT NULL,
   `doctor_id` int(11) DEFAULT NULL,
   `polyclinic_id` int(5) DEFAULT NULL,
-  `follow_up` enum('0','1','2','3') DEFAULT NULL COMMENT '- 0 = Rawat Jalan\n- 1 = Rawat Inap\n- 2 = Rujukan RS Lain\n- 3 = Meninggal',
+  `patient_status` tinyint(1) DEFAULT NULL COMMENT '- 1 = Umum\n- 2 = Asuransi Swasta\n- 3 = BPJS\n- 4 = KIS',
+  `follow_up` tinyint(1) DEFAULT NULL COMMENT '- 1 = Rawat Jalan\n- 2 = Rawat Inap\n- 3 = Rujukan RS Lain\n- 4 = Meninggal\n- 5 = Check Up',
+  `kesimpulan` text,
+  `saran` text,
   `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
   `created_by` int(3) DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_medical_records_1_idx` (`patient_id`),
   KEY `fk_medical_records_2_idx` (`doctor_id`),
@@ -157,7 +254,7 @@ CREATE TABLE `medical_records` (
 
 LOCK TABLES `medical_records` WRITE;
 /*!40000 ALTER TABLE `medical_records` DISABLE KEYS */;
-INSERT INTO `medical_records` VALUES (1,'1',1,'Umum',1,1,NULL,'2017-03-28 00:00:00','2017-03-28 00:00:00',2);
+INSERT INTO `medical_records` VALUES (1,'1',1,1,1,1,5,NULL,NULL,'2017-03-28 00:00:00',2,'2017-03-28 00:00:00');
 /*!40000 ALTER TABLE `medical_records` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,17 +268,17 @@ DROP TABLE IF EXISTS `medical_records_detail`;
 CREATE TABLE `medical_records_detail` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `medical_records_id` int(11) DEFAULT NULL,
-  `medicament_id` int(11) DEFAULT NULL COMMENT 'id:obat id',
-  `quantity_of_medicament` int(2) DEFAULT NULL,
+  `jenis_pemeriksaan` varchar(45) DEFAULT NULL COMMENT 'Fisik\nKepala\nTelinga\nHidung\nRongga Mulut\nThoraks\nAbdomen\nAnggota Badan',
+  `category_pemeriksaan` varchar(45) DEFAULT NULL COMMENT 'KEPALA\nTELINGA\nHIDUNG\nRONGGA MULUT\nTHORAKS\nABDOMEN\nANGGOTA BADAN\nLainnya',
+  `nama_pemeriksaan` varchar(70) DEFAULT NULL,
+  `value` varchar(70) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(3) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_medical_records_detail_1_idx` (`medical_records_id`),
-  KEY `fk_medical_records_detail_2_idx` (`medicament_id`),
-  CONSTRAINT `fk_medical_records_detail_1` FOREIGN KEY (`medical_records_id`) REFERENCES `medical_records` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_medical_records_detail_2` FOREIGN KEY (`medicament_id`) REFERENCES `medicament` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  CONSTRAINT `fk_medical_records_detail_1` FOREIGN KEY (`medical_records_id`) REFERENCES `medical_records` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -190,7 +287,7 @@ CREATE TABLE `medical_records_detail` (
 
 LOCK TABLES `medical_records_detail` WRITE;
 /*!40000 ALTER TABLE `medical_records_detail` DISABLE KEYS */;
-INSERT INTO `medical_records_detail` VALUES (1,1,1,NULL,NULL,NULL,NULL);
+INSERT INTO `medical_records_detail` VALUES (1,1,'Fisik','Kepala','Annamnesa / Keluhan','Tidak ada keluhan',NULL,NULL,NULL),(2,1,'Fisik','Kepala','Tinggi Badan','163.5 cm',NULL,NULL,NULL),(3,1,'Fisik','Kepala','Berat Badan','47.0 Kg',NULL,NULL,NULL),(4,1,'Fisik','Kepala','Lingkar Perut','63 cm',NULL,NULL,NULL),(5,1,'Fisik','Kepala','BMI','17.58',NULL,NULL,NULL),(6,1,'Fisik','Kepala','Tekanan Darah','120/80 mmHg',NULL,NULL,NULL),(7,1,'Fisik','Kepala','Denyut Nadi','80 x/m',NULL,NULL,NULL),(8,1,'Fisik','Kepala','Suhu Tubuh','37 Celcius',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `medical_records_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -404,7 +501,7 @@ CREATE TABLE `patient` (
 
 LOCK TABLES `patient` WRITE;
 /*!40000 ALTER TABLE `patient` DISABLE KEYS */;
-INSERT INTO `patient` VALUES (1,'32647789000143','Kiki Kurniawan','male','Jakarta','1991-09-28',165,55,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,'S1','B','Karyawan Swasta',1,'Indonesia',2,1,'2017-03-28 00:00:00','2017-03-28 00:00:00',2),(2,'32647789000144','Kiki Kurniawan','male','Jakarta','1991-09-28',165,55,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,'S1','B','Karyawan Swasta',1,'Indonesia',2,2,'2017-03-28 00:00:00','2017-03-28 00:00:00',2),(3,'4543','Rijal','male','jakarta','2017-05-17',146,35,'Jl. Jati Rt.004/Rw.003 No.2 Sawangan Baru','Sawangan','Depok',NULL,15,'09776576323','',1,'2','A','Pelajar',1,'',1,3,'2017-05-20 18:18:03','2017-05-20 18:18:03',0);
+INSERT INTO `patient` VALUES (1,'32647789000143','Kiki Kurniawan','male','Jakarta','1991-09-28',165,55,'Jl. Jati','Sawangan Baru','Depok','Jawa Barat',25,'081287679290',NULL,1,'S1','B','Karyawan Swasta',1,'Indonesia',2,1,'2017-03-28 00:00:00','2017-03-28 00:00:00',2),(2,'32647789000144','Kiki Kurniawan','male','Jakarta','1991-09-28',165,55,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,'S1','B','Karyawan Swasta',1,'Indonesia',2,2,'2017-03-28 00:00:00','2017-03-28 00:00:00',2),(3,'4543','Rijal','male','jakarta','2017-05-17',146,35,'Jl. Jati Rt.004/Rw.003 No.2 Sawangan Baru','Sawangan','Depok',NULL,15,'09776576323','',1,'2','A','Pelajar',1,'',1,3,'2017-05-20 18:18:03','2017-05-20 18:18:03',0);
 /*!40000 ALTER TABLE `patient` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -483,6 +580,8 @@ CREATE TABLE `registration_inpatient` (
   `relation_family` varchar(45) DEFAULT NULL,
   `phone_number` varchar(15) DEFAULT NULL,
   `type_reference` int(1) DEFAULT NULL COMMENT '1: Kemauan Sendiri\n2: Rujukan Rs Lain\n3: Rujukan Internal',
+  `hospital_name` varchar(60) DEFAULT NULL,
+  `description_reference` text,
   `complaint_of_felt` text,
   `registration_note` text,
   `room_care_id` int(11) DEFAULT NULL,
@@ -497,7 +596,7 @@ CREATE TABLE `registration_inpatient` (
   CONSTRAINT `fk_registration_inpatient_1` FOREIGN KEY (`registration_id`) REFERENCES `registration` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_registration_inpatient_2` FOREIGN KEY (`room_care_id`) REFERENCES `room_care` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_registration_inpatient_3` FOREIGN KEY (`doctor_id`) REFERENCES `doctor` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -506,6 +605,7 @@ CREATE TABLE `registration_inpatient` (
 
 LOCK TABLES `registration_inpatient` WRITE;
 /*!40000 ALTER TABLE `registration_inpatient` DISABLE KEYS */;
+INSERT INTO `registration_inpatient` VALUES (1,1,'Ade Rachman','Kakak Kandung','081310563709',1,NULL,NULL,'Demam Berdarah',NULL,1,1,'2017-03-28 00:00:00','2017-03-28 00:00:00',NULL);
 /*!40000 ALTER TABLE `registration_inpatient` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -530,7 +630,7 @@ CREATE TABLE `room_care` (
   PRIMARY KEY (`id`),
   KEY `fk_kamar_inap_1_idx` (`rooms_id`),
   CONSTRAINT `fk_kamar_inap_1` FOREIGN KEY (`rooms_id`) REFERENCES `rooms` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -539,6 +639,7 @@ CREATE TABLE `room_care` (
 
 LOCK TABLES `room_care` WRITE;
 /*!40000 ALTER TABLE `room_care` DISABLE KEYS */;
+INSERT INTO `room_care` VALUES (1,'Delima 1','Kelas 1',2,'250000',3,1,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `room_care` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -559,7 +660,7 @@ CREATE TABLE `rooms` (
   `created_by` int(3) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `no_ruangan_UNIQUE` (`rooms_number`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -568,7 +669,7 @@ CREATE TABLE `rooms` (
 
 LOCK TABLES `rooms` WRITE;
 /*!40000 ALTER TABLE `rooms` DISABLE KEYS */;
-INSERT INTO `rooms` VALUES (1,1,'A-001',1,NULL,NULL,1);
+INSERT INTO `rooms` VALUES (1,1,'A-001',1,NULL,NULL,1),(2,1,'L-001',1,NULL,NULL,1),(3,2,'R-001',1,NULL,NULL,1);
 /*!40000 ALTER TABLE `rooms` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -581,4 +682,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-22  1:27:01
+-- Dump completed on 2017-05-26  1:10:10

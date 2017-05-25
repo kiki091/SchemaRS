@@ -95,7 +95,7 @@ class Registration
         $dataTranform['country'] = isset($data['patient']['country']) ? $data['patient']['country'] : '';
         $dataTranform['marital_status'] = isset($data['patient']['marital_status']) ? $data['patient']['marital_status'] : '';
         
-        $dataTranform['medical_record'] = $this->getMedicalRecordPatient($data['patient']['medical_record']);
+        // $dataTranform['medical_record'] = $this->getMedicalRecordPatient($data['patient']['medical_record']);
 
 
         return $dataTranform;
@@ -114,50 +114,17 @@ class Registration
             return [
                 'time_checkup' => isset($data['created_at']) ? $data['created_at'] : '',
                 'patient_status' => isset($data['patient_status']) ? $data['patient_status'] : '',
+                'kesimpulan' => isset($data['kesimpulan']) ? $data['kesimpulan'] : '',
+                'saran' => isset($data['saran']) ? $data['saran'] : '',
                 'follow_up' => isset($data['follow_up']) ? $data['follow_up'] : '',
-                'policlinic' => $this->getPoliclinicByMedicalRecord($data['policlinic']),
-                'doctor' => $this->getDoctorByMedicalRecord($data['doctor']),
-                'record_detail' => $this->getMedicalRecordDetail($data['detail']['medicament']),
+                'policlinic' => isset($data['policlinic']['policlinic_name']) ? $data['policlinic']['policlinic_name'] : '',
+                'doctor' => isset($data['doctor']['fullname']) ? $data['doctor']['fullname'] : '',
+                'doctor_specialist' => isset($data['doctor']['specialist']) ? $data['doctor']['specialist'] : '',
+                'record_detail' => $this->getMedicalRecordDetail($data['detail']),
             ];
         }, $data);
-
+        
         return $dataTranform;
-    }
-
-    /**
-     * Get Data Policlinic By Medical Record
-     * @param
-     * @return array()
-     */
-
-    protected function getPoliclinicByMedicalRecord($data)
-    {
-        return array_map(function($data) {
-
-            return [
-                'policlinic_name' => isset($data['policlinic_name']) ? $data['policlinic_name'] : '',
-            ];
-        }, $data);
-
-    }
-
-    /**
-     * Get Data Doctor By Medical Record
-     * @param
-     * @return array()
-     */
-
-    protected function getDoctorByMedicalRecord($data)
-    {
-        return array_map(function($data) {
-
-            return [
-                'doctor_id' => isset($data['nik']) ? $data['nik'] : '',
-                'doctor_name' => isset($data['fullname']) ? $data['fullname'] : '',
-                'doctor_specialist' => isset($data['specialist']) ? $data['specialist'] : '',
-            ];
-        }, $data);
-
     }
 
     /**
@@ -168,14 +135,24 @@ class Registration
 
     protected function getMedicalRecordDetail($data)
     {
-        return array_map(function($data) {
+        $dataTranform = array_map(function($data) {
 
             return [
-                'medicament_code' => isset($data['medicament_code']) ? $data['medicament_code'] : '',
-                'medicament_name' => isset($data['medicament_name']) ? $data['medicament_name'] : '',
+                'jenis_pemeriksaan' => isset($data['jenis_pemeriksaan']) ? $data['jenis_pemeriksaan'] : '',
+                'category_pemeriksaan' => isset($data['category_pemeriksaan']) ? $data['category_pemeriksaan'] : '',
+                'nama_pemeriksaan' => isset($data['nama_pemeriksaan']) ? $data['nama_pemeriksaan'] : '',
+                'value' => isset($data['value']) ? $data['value'] : '',
             ];
         }, $data);
 
-    }
+        $finalData = [];
+        foreach ($dataTranform as $item) {
+            $finalData[$item['jenis_pemeriksaan']][$item['category_pemeriksaan']][] = $item;
 
+        }
+
+
+        return $finalData;
+
+    }
 }

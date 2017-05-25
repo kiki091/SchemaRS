@@ -6,24 +6,33 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\BaseController;
 use App\Services\Api\Response as ResponseService;
 use App\Services\Bridge\Auth\User as UserServices;
+use App\Services\Bridge\Doctor as DoctorServices;
+use App\Services\Bridge\RoomCare as RoomCareServices;
 use App\Services\Bridge\Registration as RegistrationServices;
+use App\Services\Bridge\RegistrationInpatient as RegistrationInpatientServices;
 
 use Auth;
 use Session;
 use Validator;
 use ValidatesRequests;
 
-class RegistrationController extends BaseController
+class RegistrationInpatientController extends BaseController
 {
 	protected $user;
+    protected $doctor;
+    protected $roomCare;
 	protected $registration;
+    protected $registrationInpatient;
     protected $response;
     protected $validationMessage = '';
 
-	public function __construct(RegistrationServices $registration, UserServices $user, ResponseService $response)
+	public function __construct(DoctorServices $doctor, RoomCareServices $roomCare, RegistrationServices $registration, RegistrationInpatientServices $registrationInpatient, UserServices $user, ResponseService $response)
     {
         $this->user = $user;
+        $this->doctor = $doctor;
+        $this->roomCare = $roomCare;
         $this->registration = $registration;
+        $this->registrationInpatient = $registrationInpatient;
         $this->response = $response;
     }
 
@@ -33,7 +42,7 @@ class RegistrationController extends BaseController
 
     public function index(Request $request)
     {
-        $blade = self::URL_BLADE_CMS.'registration.registration';
+        $blade = self::URL_BLADE_CMS.'registration.registration-inpatient';
 
         if(view()->exists($blade)) 
         {
@@ -48,7 +57,9 @@ class RegistrationController extends BaseController
     public function getData(Request $request)
     {
 
-    	$data['registration'] = $this->registration->getData();
+    	$data['registration_inpatient'] = $this->registrationInpatient->getData();
+        $data['doctor'] = $this->doctor->getData();
+        $data['room_care'] = $this->roomCare->getData();
 
     	return $this->response->setResponse(trans('success_get_data'), true, $data);
     }
@@ -64,7 +75,18 @@ class RegistrationController extends BaseController
         $params['param'] = $request->get('param');
         $params['number'] = $request->get('number');
 
-        $data['registration'] = $this->registration->getData($params);
+        $data['registration_inpatient'] = $this->registrationInpatient->getData($params);
+
+        return $this->response->setResponse(trans('success_get_data'), true, $data);
+    }
+
+    
+
+    public function searchDataForm(Request $request)
+    {
+        $params['number'] = $request->get('number');
+
+        $data['registration'] = $this->registrationInpatient->searchDataForm($params);
 
         return $this->response->setResponse(trans('success_get_data'), true, $data);
     }
@@ -77,7 +99,7 @@ class RegistrationController extends BaseController
 
     public function showData(Request $request)
     {
-        return $this->registration->showData($request->except(['_token']));
+        return $this->registrationInpatient->showData($request->except(['_token']));
     }
 
     /**
@@ -97,7 +119,7 @@ class RegistrationController extends BaseController
         } else {
             //TODO: case pass
             
-            return $this->registration->store($request->except(['_token']));
+            return $this->registrationInpatient->store($request->except(['_token']));
         }
     }
 
@@ -109,20 +131,14 @@ class RegistrationController extends BaseController
     {
         $rules = [
 
-            'nik'                   => 'required|min:14',
-            'fullname'              => 'required',
-            'gender'                => 'required',
-            'place_of_birth'        => 'required',
-            'date_of_birth'         => 'required',
-            'street'                => 'required',
-            'weight'                => 'required',
-            'districts'             => 'required',
-            'city'                  => 'required',
-            'province'              => 'required',
-            'age'                   => 'required',
-            'religion'              => 'required',
-            'citizen'               => 'required',
-            'marital_status'        => 'required',
+            'person_in_charge'      => 'required',
+            'relation_family'       => 'required',
+            'phone_number'          => 'required',
+            'type_reference'        => 'required',
+            'complaint_of_felt'     => 'required',
+            'room_care_id'          => 'required',
+            'doctor_id'             => 'required',
+            'registration_id'       => 'required',
         ];
 
         return $rules;

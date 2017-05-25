@@ -4,7 +4,7 @@
 			<div class="form--top flex-between">
 				<div class="form__title"><h2>Registrasi Pasien</h2></div>
 				<div class="form--top__btn">
-					<a href="#" class="btn__add__cancel" @click="resetForm">Cancel</a>
+					
 				</div>
 			</div>
 			<div class="form--mid">
@@ -38,7 +38,7 @@
 							<div class="create__form__row">
 								<div class="new__form__field">
 									<label>Jenis Kelamin</label>
-									<select name="gender" v-model="models.gender">
+									<select name="gender" class="form-control" v-model="models.gender">
 										<option value="">Pilih Jenis Kelamin</option>
 										<option value="male">Laki-laki</option>
 										<option value="female">Perempuan</option>
@@ -115,7 +115,7 @@
 							<div class="create__form__row">
 								<div class="new__form__field">
 									<label>Agama</label>
-									<select name="religion" v-model="models.religion">
+									<select name="religion" class="form-control" v-model="models.religion">
 										<option value="">Pilih Agama</option>
 										<option value="1">ISLAM</option>
 										<option value="2">KRISTEN KATOLIK</option>
@@ -131,7 +131,7 @@
 							<div class="create__form__row">
 								<div class="new__form__field">
 									<label>Pendidikan</label>
-									<select name="education" v-model="models.education">
+									<select name="education" class="form-control" v-model="models.education">
 										<option value="">Pilih Pendidikan Terakhir</option>
 										<option value="1">SD</option>
 										<option value="2">SMP</option>
@@ -207,7 +207,7 @@
 							<div class="create__form__row">
 								<div class="new__form__field">
 									<label>Warga Negara</label>
-									<select name="citizen" v-model="models.citizen">
+									<select name="citizen" class="form-control" v-model="models.citizen">
 										<option value="">Warga Negara</option>
 										<option value="1">WNI</option>
 										<option value="2">WNA</option>
@@ -239,7 +239,7 @@
 							<div class="create__form__row">
 								<div class="new__form__field">
 									<label>Status Perkawinan</label>
-									<select name="marital_status" v-model="models.marital_status">
+									<select name="marital_status" class="form-control" v-model="models.marital_status">
 										<option value="">Status Perkawinan</option>
 										<option value="1">Belum Menikah</option>
 										<option value="2">Sudah Menikah</option>

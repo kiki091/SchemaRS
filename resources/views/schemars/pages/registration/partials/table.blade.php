@@ -2,96 +2,199 @@
 	<div class="create__form__wrapper">
 		<div class="form--top flex-between">
 			<div class="form__title"><h2>Detail Pasien</h2></div>
-			<div class="form--top__btn">
-				<a href="#" class="btn__add__cancel" @click="printData">Cetak</a>
-			</div>
+			
 		</div>
 		<div class="form--mid">
 			<div class="create__form content__tab active__content">
 				<table align="center" cellpadding="0" cellspacing="0" class="table__style">
-					<tbody>
+					<thead>
 						<!-- header tabel -->
 						<tr>
-							<th>Nomer Registrasi</th>
-							<th>NIK</th>
-							<th>Nama Lengkap</th>
-							<th>Tanggal Registrasi</th>
-							<th>Tempat Lahir</th>
-							<th>Tanggal Lahir</th>
-							<th>Pendidikan</th>
-							<th>Pekerjaan</th>
-							<th>Agama</th>
-							<th>Warganega</th>
-							<th v-if="models.citizen == '2'">Negara Asal</th>
-							<th>Status</th>
+							<th style="text-align: left;">
+								<b>Nama Lengkap</b>
+								<br>
+								@{{ models.fullname }}
+							</th>
+							<th>
+								<b>Nomer Registrasi</b>
+								<br>
+								@{{ models.registration_number }}
+							</th>
+							<th>
+								<b>NIK</b>
+								<br>
+								@{{ models.nik }}
+							</th>
+							<th>
+								<b>Umur</b>
+								<br>
+								@{{ models.age }}
+							</th>
+							<th>
+								<b>J. Kelamin</b>
+								<br>
+								<span v-if="models.gender == 'male'">Laki-laki</span>
+								<span v-if="models.gender == 'female'">Perempuan</span>
+							</th>
 						</tr>
-						<!-- isi tabel -->
+					</thead>
+				</table>
+				<table align="center" cellpadding="0" cellspacing="0" class="table__style">
+					<thead>
 						<tr>
-							<td>@{{ models.registration_number }}</td>
-							<td>@{{ models.nik }}</td>
-							<td>@{{ models.fullname }}</td>
-							<td>@{{ models.registration_date }}</td>
-							<td>@{{ models.place_of_birth }}</td>
-							<td>@{{ models.date_of_birth }}</td>
-							<td>@{{ models.education }}</td>
-							<td>@{{ models.work }}</td>
-							<td>
+							<th style="text-align: left;width: 22.7%;">
+								<b>TGL. Registrasi</b>
+								<br>
+								@{{ models.registration_date }}
+							</th>
+
+							<th style="width: 25.2%;">
+								<b>Telepon</b>
+								<br>
+								@{{ models.phone_number }}
+							</th>
+
+							<th>
+								<b>Catatan</b>
+								<br>
+								<span v-if="models.description != false">@{{ models.description }}</span>
+								<span v-if="models.description == false">Tidak ada catatan</span>
+							</th>
+						</tr>
+					</thead>
+				</table>
+				<table align="center" cellpadding="0" cellspacing="0" class="table__style">
+					<thead>
+						<tr>
+							<th style="text-align: left;">
+								<b>Alamat</b>
+								<br>
+								@{{ models.street }}, @{{ models.districts }}, @{{ models.city }}, @{{ models.province }}
+							</th>
+						</tr>
+						<!-- end isi tabel -->
+					</thead>
+				</table>
+				<table align="center" cellpadding="0" cellspacing="0" class="table__style">
+					<thead>
+						<!-- header tabel -->
+						<tr>
+							<th class="fild" style="text-align: left;">
+								<b>Tempat Lahir</b>
+							</th>
+							<th>
+								@{{ models.place_of_birth }}
+							</th>
+						</tr>
+						<tr>
+							<th class="fild" style="text-align: left;">
+								<b>Tanggal Lahir</b>
+							</th>
+							<th>
+								@{{ models.date_of_birth }}
+							</th>
+						</tr>
+						<tr>
+							<th class="fild" style="text-align: left;">
+								<b>Status Perkawinan</b>
+							</th>
+							<th>
+								<span v-if="models.marital_status == '1'">Belum Menikah</span>
+								<span v-if="models.marital_status == '2'">Sudah Menikah</span>
+							</th>
+						</tr>
+						<tr>
+							<th class="fild" style="text-align: left;">
+								<b>Agama</b>
+							</th>
+							<th>
 								<span v-if="models.religion == '1'">Islam</span>
 								<span v-if="models.religion == '2'">Kristen Katolik</span>
 								<span v-if="models.religion == '3'">Kristen Protestan</span>
 								<span v-if="models.religion == '4'">Hindu</span>
 								<span v-if="models.religion == '5'">Budha</span>
 								<span v-if="models.religion == '6'">Lainnya</span>
-							</td>
-							<td>
+							</th>
+						</tr>
+						<tr>
+							<th class="fild" style="text-align: left;">
+								<b>Pendidikan</b>
+							</th>
+							<th>
+								@{{ models.education }}
+							</th>
+						</tr>
+						<tr>
+							<th class="fild" style="text-align: left;">
+								<b>Pekerjaan</b>
+							</th>
+							<th>
+								@{{ models.work }}
+							</th>
+						</tr>
+
+						<tr>
+							<th class="fild" style="text-align: left;">
+								<b>Kewarganegaraan</b>
+							</th>
+							<th>
 								<span v-if="models.citizen == '1'">WNI</span>
 								<span v-if="models.citizen == '2'">WNA</span>
-							</td>
-							<td v-if="models.citizen == '2'">
+							</th>
+						</tr>
+						<tr v-if="models.citizen == '2'">
+							<th class="fild" style="text-align: left;">
+								<b>Negara</b>
+							</th>
+							<th>
 								@{{ models.country }}
-							</td>
-							<td>
-								<span v-if="models.marital_status =='1'">Belum Menikah</span>
-								<span v-if="models.marital_status =='2'">Sudah Menikah</span>
-							</td>
+							</th>
 						</tr>
-						<!-- end isi tabel -->
-					</tbody>
-				</table>
-			</div>
-		</div>
-
-		<div class="form--top flex-between">
-			<div class="form__title"><h2>Rekam Medis</h2></div>
-		</div>
-
-		<div class="form--mid">
-			<div class="create__form content__tab active__content" v-for="record in medical_record">
-				<div class="form__title"><h6><b>Tanggal Checkup : @{{ record.time_checkup }}</b></h6></div>
-				<table align="center" cellpadding="0" cellspacing="0" class="table__style">
-					<thead>
 						<tr>
-							<th>Dokter</th>
-							<th>Poliklinik</th>
-							<th>Detail</th>
+							<th class="fild" style="text-align: left;">
+								<b>Berat Badan</b>
+							</th>
+							<th>
+								@{{ models.weight }} Kg
+							</th>
 						</tr>
+						<tr>
+							<th class="fild" style="text-align: left;">
+								<b>Tinggi Badan</b>
+							</th>
+							<th>
+								@{{ models.height }} CM
+							</th>
+						</tr>
+						<tr>
+							<th class="fild" style="text-align: left;">
+								<b>Golongan Darah</b>
+							</th>
+							<th>
+								@{{ models.blood }}
+							</th>
+						</tr>
+
+
 					</thead>
-					<tbody>
-						<tr>
-							<td>
-								<div v-for="doctor in record.doctor">@{{ doctor.doctor_name }}</div>
-							</td>
-							<td>
-								<div v-for="policlinic in record.policlinic">@{{ policlinic.policlinic_name }}</div>
-							</td>
-							<td>
-								<div v-for="record_detail in record.record_detail">@{{ record_detail.medicament_name }}</div>
-							</td>
-						</tr>
-					</tbody>
 				</table>
 			</div>
+		</div>
+		<div class="form--bot">
+			<div class="create__form">
+				<div class="create__form__row flex-between">
+					<div class="new__form__btn">
+						<div class="form--top__btn">
+							<a href="#" class="btn__add__cancel">Close</a>
+						</div>
+					</div>
 
+					<div class="new__form__btn">
+						<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
+						<button class="btn__form" type="submit" @click="printData">Cetak</button>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

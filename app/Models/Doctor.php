@@ -40,6 +40,13 @@ class Doctor extends Model
     {
         return $this->belongsTo('App\Models\Policlinic', 'poliklinik_id', 'id');
     }
+
+    /***************** Relations Alter Table *****************/
+
+    public function schedule()
+    {
+        return $this->belongsTo('App\Models\DoctorSchedule', 'doctor_id', 'id');
+    }
     
     /***************** Scope *****************/
 

@@ -26,17 +26,17 @@ class RegistrationInpatient extends Model
 
     public function registration()
     {
-        return $this->belongsTo('App\Models\Registration', 'registration_id', 'id');
+        return $this->belongsTo('App\Models\Registration', 'registration_id', 'id')->with('patient');
     }
 
     public function room_care()
     {
-        return $this->hasMany('App\Models\Registration', 'id', 'room_care_id');
+        return $this->belongsTo('App\Models\RoomCare', 'room_care_id', 'id');
     }
 
     public function doctor()
     {
-        return $this->belongsTo('App\Models\Registration', 'doctor_id', 'id');
+        return $this->belongsTo('App\Models\Doctor', 'doctor_id', 'id');
     }
     
     /***************** Scope *****************/

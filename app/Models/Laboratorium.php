@@ -4,13 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class MedicalRecordDetails extends Model
+class Laboratorium extends Model
 {
-    protected $table = 'medical_records_detail';
+    protected $table = 'laboratorium';
     public $timestamps = true;
 
 
     protected $fillable = [
+	    'laboratorium_name', 
         'created_at',
         'updated_at',
         'created_by',
@@ -18,10 +19,14 @@ class MedicalRecordDetails extends Model
 
     /***************** Relations Alter Table *****************/
 
-    public function medical_records()
+    public function result()
     {
-        return $this->hasMany('App\Models\MedicalRecords', 'id', 'medical_records_id');
+        return $this->belongsTo('App\Models\LaboratoriumResult', 'laboratorium_id', 'id');
     }
+
+    public function room()
+    {
+        return $this->hasMany('App\Models\Rooms', 'id', 'room_id');
     
     /***************** Scope *****************/
 

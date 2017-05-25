@@ -24,6 +24,9 @@ class SchemaRsServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind('App\Repositories\Contracts\Registration', 'App\Repositories\Implementation\Registration');
+        $this->app->bind('App\Repositories\Contracts\RegistrationInpatient', 'App\Repositories\Implementation\RegistrationInpatient');
+        $this->app->bind('App\Repositories\Contracts\Doctor', 'App\Repositories\Implementation\Doctor');
+        $this->app->bind('App\Repositories\Contracts\RoomCare', 'App\Repositories\Implementation\RoomCare');
     }
 
     /**
@@ -35,6 +38,9 @@ class SchemaRsServiceProvider extends ServiceProvider
     {
         return array(
             'App\Repositories\Contracts\Registration',
+            'App\Repositories\Contracts\RegistrationInpatient',
+            'App\Repositories\Contracts\Doctor',
+            'App\Repositories\Contracts\RoomCare',
         );
     }
 

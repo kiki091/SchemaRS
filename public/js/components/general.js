@@ -203,9 +203,6 @@ function setSelectedFolder()
     $SIDEBAR_MENU.find('a.folder--selected').removeClass("folder--selected")
     var addingClass = $SIDEBAR_MENU.find('a[href="#' + CURRENT_SLUG + '"]').addClass("folder--selected")
 
-    if (!addingClass.length && CURRENT_SLUG  != 'gallery' && CURRENT_SLUG  != 'accommodation' && CURRENT_SLUG  != 'faq' && CURRENT_SLUG  != 'awards-page') {
-        $SIDEBAR_MENU.find('a:first-child').addClass("folder--selected")
-    }
 }
 
 function property() {
@@ -438,5 +435,14 @@ function initDataRegistration()
 {
     mainGeneral()
     crudDataRegistration();
+    replaceToCkEditor();
+}
+
+
+// INIT FUNCTION WEB CMS
+function initDataRegistrationInpatient()
+{
+    mainGeneral()
+    crudDataRegistrationInpatient();
     replaceToCkEditor();
 }

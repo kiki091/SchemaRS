@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class MedicalRecordDetails extends Model
+class LaboratoriumResultDetail extends Model
 {
-    protected $table = 'medical_records_detail';
+    protected $table = 'laboratorium_result_detail';
     public $timestamps = true;
 
 
@@ -16,13 +16,6 @@ class MedicalRecordDetails extends Model
         'created_by',
     ];
 
-    /***************** Relations Alter Table *****************/
-
-    public function medical_records()
-    {
-        return $this->hasMany('App\Models\MedicalRecords', 'id', 'medical_records_id');
-    }
-    
     /***************** Scope *****************/
 
 
