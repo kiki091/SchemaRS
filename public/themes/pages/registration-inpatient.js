@@ -150,29 +150,20 @@ function crudDataRegistrationInpatient() {
             },
             
             resetForm: function(){
-                this.models.id = ''
-                this.models.nik = ''
-                this.models.fullname = ''
-                this.models.gender = ''
-                this.models.place_of_birth = ''
-                this.models.date_of_birth = ''
-                this.models.height = ''
-                this.models.weight = ''
-                this.models.street = ''
-                this.models.districts = ''
-                this.models.city = ''
-                this.models.province = ''
-                this.models.age = ''
-                this.models.phone_number = ''
-                this.models.description = ''
-                this.models.religion = ''
-                this.models.education = ''
-                this.models.blood = ''
-                this.models.work = ''
-                this.models.citizen = ''
-                this.models.country = ''
-                this.models.marital_status = ''
                 this.models.registration_id = ''
+                this.models.person_in_charge = ''
+                this.models.relation_family = ''
+                this.models.phone_number = ''
+                this.models.type_reference = ''
+                this.models.complaint_of_felt = ''
+                this.models.registration_note = ''
+                this.models.room_care_id = ''
+                this.models.doctor_id = ''
+
+                $('#form-filter-function-by-number').val('')
+
+                $('select').prop('selectedIndex', 0);
+                $('textarea').val('');
             },
 
         },

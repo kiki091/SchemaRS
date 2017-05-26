@@ -62,12 +62,12 @@ class RegistrationInpatient
 
     protected function setSearchFormDataPatientTransform($data)
     {
-        $dataTranform['registration_id'] = isset($data['registration']['id']) ? $data['registration']['id'] : '';
-        $dataTranform['registration_number'] = isset($data['registration']['registration_number']) ? $data['registration']['registration_number'] : '';
+        $dataTranform['registration_id'] = isset($data['id']) ? $data['id'] : '';
+        $dataTranform['registration_number'] = isset($data['registration_number']) ? $data['registration_number'] : '';
 
 
-        $dataTranform['fullname'] = isset($data['registration']['patient']['fullname']) ? $data['registration']['patient']['fullname'] : '';
-        $dataTranform['nik'] = isset($data['registration']['patient']['nik']) ? $data['registration']['patient']['nik'] : '';
+        $dataTranform['fullname'] = isset($data['patient']['fullname']) ? $data['patient']['fullname'] : '';
+        $dataTranform['nik'] = isset($data['patient']['nik']) ? $data['patient']['nik'] : '';
 
         return $dataTranform;
 
