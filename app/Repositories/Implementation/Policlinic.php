@@ -4,9 +4,9 @@ namespace App\Repositories\Implementation;
 
 use Illuminate\Http\Request;
 use App\Repositories\Implementation\BaseImplementation;
-use App\Repositories\Contracts\RoomCare as RoomCareInterface;
-use App\Models\RoomCare as RoomCareModels;
-use App\Services\Transformation\RoomCare as RoomCareTransformation;
+use App\Repositories\Contracts\Policlinic as PoliclinicInterface;
+use App\Models\Policlinic as PoliclinicModels;
+use App\Services\Transformation\Policlinic as PoliclinicTransformation;
 use App\Custom\Helper\DataHelper;
 use Cache;
 use Session;
@@ -14,30 +14,30 @@ use DB;
 use stdClass;
 use Auth;
 
-class RoomCare extends BaseImplementation implements RoomCareInterface
+class Policlinic extends BaseImplementation implements PoliclinicInterface
 {
 	protected $message;
-    protected $roomCare;
+    protected $policlinic;
     protected $lastInsertId;
-    protected $roomCareTransformation;
+    protected $policlinicTransformation;
     protected $uniqueIdImagePrefix = '';
 
-    function __construct(RoomCareModels $roomCare, RoomCareTransformation $roomCareTransformation)
+    function __construct(PoliclinicModels $policlinic, PoliclinicTransformation $policlinicTransformation)
     {
-        $this->roomCare = $roomCare;
-        $this->roomCareTransformation = $roomCareTransformation;
+        $this->policlinic = $policlinic;
+        $this->policlinicTransformation = $policlinicTransformation;
         $this->uniqueIdImagePrefix = uniqid(PREFIX_FILENAME_IMAGE);
     }
 
     public function getData($data)
     {
         $params = [
-            "order_by" => "created_at",
+            "order_by" => "created_at"
         ];
 
-        $roomCareData = $this->roomCare($params, 'desc', 'array', true);
+        $policlinicData = $this->policlinic($params, 'desc', 'array', true);
         
-        return $this->roomCareTransformation->getRoomCareTransform($roomCareData);
+        return $this->policlinicTransformation->getPoliclinicTransform($policlinicData);
     }
 
     /**
@@ -46,31 +46,31 @@ class RoomCare extends BaseImplementation implements RoomCareInterface
      * @param array $params
      * @return array
      */
-    protected function roomCare($params = array(), $orderType = 'desc', $returnType = 'array', $returnSingle = false)
+    protected function policlinic($params = array(), $orderType = 'desc', $returnType = 'array', $returnSingle = false)
     {
 
-        $roomCare = $this->roomCare
+        $policlinic = $this->policlinic
             ->with(['rooms']);
 
 
         if(isset($params['order_by'])) {
-            $roomCare->orderBy($params['order_by'], $orderType);
+            $policlinic->orderBy($params['order_by'], $orderType);
         }
 
         if(isset($params['id'])) {
-            $roomCare->id($params['id']);
+            $policlinic->id($params['id']);
         }
 
-        if(!$roomCare->count())
+        if(!$policlinic->count())
             return array();
 
         switch ($returnType) {
             case 'array':
                 if($returnSingle) {
-                    return $roomCare->get()->toArray();
+                    return $policlinic->get()->toArray();
                 } 
                 else {
-                    return $roomCare->first()->toArray();
+                    return $policlinic->first()->toArray();
                 }
 
             break;

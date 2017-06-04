@@ -48,7 +48,8 @@ class RegistrationInpatient extends BaseImplementation implements RegistrationIn
     public function showData($data) 
     {
         $params = [
-            "registration_id" => isset($data['show'])? $data['show'] : '',
+            "search_by_nik" => isset($data['param'])? $data['param'] : '',
+            "search_by_number" => isset($data['number'])? $data['number'] : '',
         ];
 
         $showDataPatient = $this->registrationInpatient($params, 'asc', 'array', false);

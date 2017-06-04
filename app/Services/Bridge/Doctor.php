@@ -23,4 +23,34 @@ class Doctor {
         return $this->doctor->getData($params);
     }
 
+    /**
+     * Store Data 
+     * @param $params
+     * @return mixed
+     */
+    public function store($params = [])
+    {
+        return $this->doctor->store($params);
+    }
+
+    /**
+     * Edit Data 
+     * @param $params
+     * @return mixed
+     */
+    public function edit($params = [])
+    {
+        return $this->doctor->edit($params);
+    }
+
+    /**
+     * Change Status 
+     * @param $params
+     * @return mixed
+     */
+    public function changeStatus($params = [])
+    {
+        return $this->doctor->changeStatus($params);
+    }
+
 }

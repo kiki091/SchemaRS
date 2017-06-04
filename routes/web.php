@@ -56,6 +56,10 @@ Route::group(['middleware' => ['web']], function ()
 			Route::group(array('prefix' => 'doctor' ), function() {
 				Route::get('/', 'SchemaRS\Web\Pages\DoctorController@index')->name('DoctorIndex');
 				Route::get('data', 'SchemaRS\Web\Pages\DoctorController@getData')->name('getDataDoctor');
+				Route::get('search', 'SchemaRS\Web\Pages\DoctorController@searchData')->name('searchDataDoctor');
+				Route::post('store', 'SchemaRS\Web\Pages\DoctorController@storeData')->name('storeDataDoctor');
+				Route::post('edit', 'SchemaRS\Web\Pages\DoctorController@editData')->name('editDataDoctor');
+				Route::post('change-status', 'SchemaRS\Web\Pages\DoctorController@changeStatus')->name('changeStatusDoctor');
 			});
 		});
 	});

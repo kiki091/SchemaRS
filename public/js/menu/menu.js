@@ -13,3 +13,11 @@ function menuRegistrationInpatient()
     	initDataRegistrationInpatient()
     });
 }
+
+function menuDoctor()
+{
+    $('.right_col').load(laroute.url('/doctor', []), function()
+    {
+    	initDataDoctor()
+    });
+}

@@ -42,12 +42,13 @@ CREATE TABLE `doctor` (
   `citizen` int(2) DEFAULT NULL COMMENT '1:WNI, 2:WNA',
   `country` varchar(40) DEFAULT NULL,
   `poliklinik_id` int(5) DEFAULT NULL,
+  `is_active` tinyint(1) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(3) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `nik_UNIQUE` (`nik`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -56,7 +57,7 @@ CREATE TABLE `doctor` (
 
 LOCK TABLES `doctor` WRITE;
 /*!40000 ALTER TABLE `doctor` DISABLE KEYS */;
-INSERT INTO `doctor` VALUES (1,'327689754',NULL,'DR Sobari','Laki-laki',NULL,NULL,NULL,NULL,'08129876873','S2',1,NULL,NULL,'Umum',NULL,NULL,NULL,1,NULL,NULL,1);
+INSERT INTO `doctor` VALUES (1,'327689754',NULL,'DR Sobari','Laki-laki',NULL,NULL,NULL,NULL,'08129876873','S2',1,NULL,NULL,'Umum',NULL,NULL,NULL,1,1,NULL,'2017-06-03 00:36:44',1),(3,'353253252353252356565','img_simrs_59320243a166b_default-user-female.png','Nama Lengkap','female','Alamat','Kecamatan','Kota','Provinsi','081287679290','2',1,'Tempat Lahir','0000-00-00','Spesialis','1',1,'',1,1,'2017-06-02 18:12:22','2017-06-03 00:36:48',0);
 /*!40000 ALTER TABLE `doctor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -172,7 +173,7 @@ CREATE TABLE `laboratorium_result` (
   KEY `fk_laboratorium_result_2_idx` (`laboratorium_id`),
   CONSTRAINT `fk_laboratorium_result_1` FOREIGN KEY (`registration_id`) REFERENCES `registration` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_laboratorium_result_2` FOREIGN KEY (`laboratorium_id`) REFERENCES `laboratorium` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -596,7 +597,7 @@ CREATE TABLE `registration_inpatient` (
   CONSTRAINT `fk_registration_inpatient_1` FOREIGN KEY (`registration_id`) REFERENCES `registration` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_registration_inpatient_2` FOREIGN KEY (`room_care_id`) REFERENCES `room_care` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_registration_inpatient_3` FOREIGN KEY (`doctor_id`) REFERENCES `doctor` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -605,7 +606,7 @@ CREATE TABLE `registration_inpatient` (
 
 LOCK TABLES `registration_inpatient` WRITE;
 /*!40000 ALTER TABLE `registration_inpatient` DISABLE KEYS */;
-INSERT INTO `registration_inpatient` VALUES (1,1,'Ade Rachman','Kakak Kandung','081310563709',1,NULL,NULL,'Demam Berdarah',NULL,1,1,'2017-03-28 00:00:00','2017-03-28 00:00:00',NULL);
+INSERT INTO `registration_inpatient` VALUES (3,3,'Penanggung Jawab','Hubungan Keluarga','Nomer Telepon',3,NULL,NULL,'Keluhan / Penyakit','Catatan',1,1,'2017-05-26 18:01:33','2017-05-26 18:01:33',0);
 /*!40000 ALTER TABLE `registration_inpatient` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -682,4 +683,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-26  1:10:10
+-- Dump completed on 2017-06-05  3:07:06

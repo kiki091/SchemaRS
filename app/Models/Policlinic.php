@@ -22,7 +22,7 @@ class Policlinic extends Model
 
     public function rooms()
     {
-        return $this->hasMany('App\Models\Rooms', 'rooms_id', 'id');
+        return $this->belongsTo('App\Models\Rooms', 'rooms_id', 'id');
     }
     
     /***************** Scope *****************/

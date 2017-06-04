@@ -27,6 +27,7 @@ class SchemaRsServiceProvider extends ServiceProvider
         $this->app->bind('App\Repositories\Contracts\RegistrationInpatient', 'App\Repositories\Implementation\RegistrationInpatient');
         $this->app->bind('App\Repositories\Contracts\Doctor', 'App\Repositories\Implementation\Doctor');
         $this->app->bind('App\Repositories\Contracts\RoomCare', 'App\Repositories\Implementation\RoomCare');
+        $this->app->bind('App\Repositories\Contracts\Policlinic', 'App\Repositories\Implementation\Policlinic');
     }
 
     /**
@@ -41,6 +42,7 @@ class SchemaRsServiceProvider extends ServiceProvider
             'App\Repositories\Contracts\RegistrationInpatient',
             'App\Repositories\Contracts\Doctor',
             'App\Repositories\Contracts\RoomCare',
+            'App\Repositories\Contracts\Policlinic',
         );
     }
 

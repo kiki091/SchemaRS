@@ -100,7 +100,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','sheqbo@gmail.com','$2y$10$jWqW0ETc23XTaaDtjktAw.XRvdet5BnBHauvmJLPBCWNfbyvI3YNy','eCzznSq3TvTkeIvafP0x7urhwOvUPyx3T2tyULiIyRTyEG0Y6pyN5fUvcYyV',1,'2017-05-04 09:58:53','2017-05-04 09:58:53'),(2,'cashier','cashier@gmail.com','$2y$10$jWqW0ETc23XTaaDtjktAw.XRvdet5BnBHauvmJLPBCWNfbyvI3YNy','dHczQ5GRBxtruJgnyA0OpR4YBK3QoJMCSVaiLTlNsc9nYTM1HAB1fZxollOl',1,NULL,NULL);
+INSERT INTO `users` VALUES (1,'admin','sheqbo@gmail.com','$2y$10$jWqW0ETc23XTaaDtjktAw.XRvdet5BnBHauvmJLPBCWNfbyvI3YNy','GOSb6acXbNksIi3l5S2eyvsbihhdMnfuw4VHp6Slv1MYtKRCkSXOAoJepbs8',1,'2017-05-04 09:58:53','2017-05-04 09:58:53'),(2,'cashier','cashier@gmail.com','$2y$10$jWqW0ETc23XTaaDtjktAw.XRvdet5BnBHauvmJLPBCWNfbyvI3YNy','dHczQ5GRBxtruJgnyA0OpR4YBK3QoJMCSVaiLTlNsc9nYTM1HAB1fZxollOl',1,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -113,4 +113,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-22  1:27:30
+-- Dump completed on 2017-06-05  3:07:26

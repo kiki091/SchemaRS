@@ -23,6 +23,7 @@
 
 <script src="{{asset('themes/pages/registration.js')}}"></script>
 <script src="{{asset('themes/pages/registration-inpatient.js')}}"></script>
+<script src="{{asset('themes/pages/doctor.js')}}"></script>
 <!-- jQuery plugins -->
 <!-- <script src="{{ asset('themes/vendors/jquery/dist/jquery.min.js') }}"></script> -->
 <!-- Bootstrap -->

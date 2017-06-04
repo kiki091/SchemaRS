@@ -3,25 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Custom\Helper\DataHelper;
 use App\Http\Controllers\Controller;
 use Illuminate\Routing\Route;
-use App\Services\Bridge\Auth\User as UserServices;
 
-use URL;
-use JavaScript;
+use Laracasts\Utilities\JavaScript\JavaScriptFacade;
 use Auth;
 use Session;
 
 class BaseController extends Controller
 {
-	protected $user;
+	const URL_BLADE_CMS = 'schemars.pages.'; 
 
-    const URL_BLADE_CMS = 'schemars.pages.'; 
-
-	public function __construct(UserServices $user)
+	public function __construct()
     {
-        $this->user = $user;
         $this->setJavascriptVariable();
 
         if (Auth::check() == null) {
@@ -34,10 +28,8 @@ class BaseController extends Controller
      */
     protected function setJavascriptVariable()
     {
-        JavaScript::put([
-            'href_url' => URL::current(),
-            'token' => csrf_token(),
-            'app_domain' => env('DOMAIN_PREFIX') . env('APP_DOMAIN'),
+        JavaScriptFacade::put([
+            'token' => csrf_token()
         ]);
     }
 }

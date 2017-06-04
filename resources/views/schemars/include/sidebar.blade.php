@@ -17,11 +17,14 @@
                         <a>
                           <i class="fa">
                               @include('schemars.svg-logo.sidebar.ico-pages')
-                          </i>Pages <span class="fa fa-chevron-down"></span>
+                          </i>Data <span class="fa fa-chevron-down"></span>
                         </a>
                         <ul class="nav child_menu">
                             <li>
                                 <a href="#registration" onclick="menuRegistration()">{{ trans('general.title_lable_registration') }}</a>
+                            </li> 
+                            <li>
+                                <a href="#doctor" onclick="menuDoctor()">{{ trans('general.title_lable_doctor') }}</a>
                             </li> 
                         </ul>
                     </li> 

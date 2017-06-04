@@ -3,7 +3,7 @@
 namespace App\Repositories\Contracts;
 
 
-interface RoomCare
+interface Policlinic
 {
 	/**
      * Get Data 

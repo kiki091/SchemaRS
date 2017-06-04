@@ -16,3 +16,8 @@ if(!defined('LOGO_HEIGHT')) define('LOGO_HEIGHT', 169);
 if(!defined('FAVICON_SIZE')) define('FAVICON_SIZE', 500);
 if(!defined('FAVICON_WIDTH')) define('FAVICON_WIDTH', 64);
 if(!defined('FAVICON_HEIGHT')) define('FAVICON_HEIGHT', 64);
+
+
+if(!defined('DOCTOR_FOTO_IMAGES_SIZE')) define('DOCTOR_FOTO_IMAGES_SIZE', 500);
+if(!defined('DOCTOR_FOTO_IMAGES_WIDTH')) define('DOCTOR_FOTO_IMAGES_WIDTH', 300);
+if(!defined('DOCTOR_FOTO_IMAGES_HEIGHT')) define('DOCTOR_FOTO_IMAGES_HEIGHT', 300);

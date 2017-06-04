@@ -420,10 +420,11 @@ function showModalDelete()
 
 function scrollTop()
 {
-    $('.main_container').scrollTop(0);
+    $('.main__content__layer').scrollTop(0);
 }
 
 function mainGeneral(){
+    scrollTop();
     datePicker();
     setSelectedFolder();
     buttonClickOpen();
@@ -444,5 +445,14 @@ function initDataRegistrationInpatient()
 {
     mainGeneral()
     crudDataRegistrationInpatient();
+    replaceToCkEditor();
+}
+
+
+// INIT FUNCTION WEB CMS
+function initDataDoctor()
+{
+    mainGeneral()
+    crudDataDoctor();
     replaceToCkEditor();
 }
